@@ -1,0 +1,956 @@
+<?xml version="1.0"?>
+<robot name="evarobot">
+ 
+ <!-- Differential Drive Plugin -->
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    <alwaysOn>true</alwaysOn>
+    <updateRate>10.0</updateRate>
+    <!--  Plugin arkadan suruslu robotlar icin yapildigindan jointler ters yazildi  -->
+    <leftJoint>right_front_wheel_joint</leftJoint>
+    <rightJoint>left_front_wheel_joint</rightJoint>
+    <wheelSeparation>0.3</wheelSeparation>
+    <wheelDiameter>0.13</wheelDiameter>
+    <torque>20</torque>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
+  </plugin>
+</gazebo>
+
+<gazebo>
+	<plugin name="MultipleContact" filename="libevarobot_ros_bumper.so"/>
+</gazebo>
+ 
+  
+<!-- Base -->
+  <link name="base_link">
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+		<!--  <box size="0.3445 0.251 0.3005"/> -->
+		<box size="0.30 0.251 0.3005"/>
+      </geometry>
+    </collision>
+
+    <visual>
+     <origin xyz="0.05 0 -0.1475" rpy="0 0 1.5708" /> 
+    <!--  <origin xyz="0.0 0 0" rpy="0 0 0" /> -->
+      <geometry>
+    <!--    <box size="0.3445 0.251 0.3005"/> -->
+        <mesh filename="package://evarobot_description/meshes/evarobot_all.stl" scale="0.001 0.001 0.001"/> 
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 .8 1"/>
+      </material>
+    </visual>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia
+        ixx="5.0" ixy="0.0" ixz="0.0"
+        iyy="5.0" iyz="0.0"
+        izz="5.0"/>
+    </inertial>
+  </link>
+  
+
+  <!-- Sol Teker -->
+    
+   <link name="left_front_wheel">
+    <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length=".024" radius="0.0675"/>
+      </geometry>
+    </collision>
+    
+   <!--<visual>
+	   <origin rpy="0 -1.57075 0" xyz="0 0 +0.01"/>
+      <geometry>
+		 <cylinder length=".024" radius="0.0675"/>  
+		     <mesh filename="package://evarobot_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/> 		
+    </visual>-->
+    
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.75"/>
+      <inertia ixx="1e-2" ixy="0" ixz="0" iyy="1e-2" iyz="0" izz="1e-2" />
+    </inertial>
+    
+  </link>
+  
+  <joint name="left_front_wheel_joint" type="continuous">
+    <axis xyz="0 1 0"/>
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    <origin rpy="0 0 0" xyz="0.04975 0.1375 -0.11775"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+ 
+ <!-- Sag Teker -->
+ 
+   <link name="right_front_wheel">
+	  <collision>
+      <origin rpy="1.57075 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length=".024" radius="0.0675"/>
+      </geometry>
+    </collision>
+       
+  <!--  <visual>
+		<origin rpy="0 -1.57075 0" xyz="0 0 -0.01"/>
+      <geometry>
+     <cylinder length=".024" radius="0.0675"/> 
+     <mesh filename="package://evarobot_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/> 		
+    </visual>
+    -->
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.75"/>
+      <inertia ixx="1e-2" ixy="0" ixz="0" iyy="1e-2" iyz="0" izz="1e-2" />
+    </inertial>
+    
+  </link>
+  
+  <joint name="right_front_wheel_joint" type="continuous">
+    <axis xyz="0 1 0"/>
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <origin rpy="0 0 0" xyz="0.04975 -0.1375 -0.11775"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+  
+ 
+   <!-- Caster -->
+  <link name="caster_wheel">
+	<collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.035"/>
+      </geometry>
+    </collision>
+    	  
+    <visual>
+      <geometry>
+        <sphere radius="0.035"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="5"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+  <gazebo reference="caster_wheel">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+  
+  <joint name="caster_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="caster_wheel"/>
+    <origin rpy="-1.57075 0 0" xyz="-0.1 0 -0.15025"/>
+ <!--   <axis xyz="0.707106781 0 0.707106781"/> -->
+    <axis xyz="0.577350269 0.577350269 0.577350269"/>
+    <limit effort="100" velocity="100"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+
+  
+  <!-- Hokuyo Laser -->
+  <link name="gazebo/laser_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://evarobot_description/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+  <!-- Hokuyo Laser -->
+   <joint name="hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 0.112" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="gazebo/laser_link"/>
+  </joint>
+  
+  <!-- Hokuyo Laser Plugin -->
+  <gazebo reference="gazebo/laser_link">
+    <sensor type="gpu_ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.1416</min_angle>
+            <max_angle>3.1416</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.5</min>
+          <max>5.0</max>
+          <resolution>0.1</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      
+  	  <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
+		<robotNamespace>gazebo</robotNamespace>
+        <topicName>sensor/Laser</topicName>
+        <frameName>laser_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/rrbot</robotNamespace>
+  </plugin>
+</gazebo>
+
+
+  
+ <!-- Kinect Link -->
+  <link name="evarobot/kinect_link">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://evarobot_description/meshes/kinect.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+  <!-- Kinect joint -->
+   <joint name="kinect_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="-0.09 0 0.4275" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="evarobot/kinect_link"/>
+  </joint>
+  
+  <!-- Kinect plugin -->
+  
+<gazebo reference="evarobot/kinect_link">
+    <sensor type="depth" name="openni_camera_camera">       
+        <always_on>1</always_on>
+        <visualize>false</visualize>             
+        <camera>
+            <horizontal_fov>1.047</horizontal_fov>  
+            <image>
+                <width>160</width>
+                <height>120</height>
+                <format>R8G8B8</format>
+            </image>
+            <depth_camera>
+
+            </depth_camera>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+        </camera>
+  <plugin name="kinect_controller" filename="libgazebo_ros_openni_kinect.so">
+	
+    <baseline>0.2</baseline>
+    <alwaysOn>true</alwaysOn>
+    <updateRate>1.0</updateRate>
+    <cameraName>kinect_ir</cameraName>
+    <imageTopicName>/kinect/depth/image_raw</imageTopicName>
+    <cameraInfoTopicName>/kinect/depth/camera_info</cameraInfoTopicName>
+    <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
+    <depthImageInfoTopicName>/kinect/depth/camera_info</depthImageInfoTopicName>
+    <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
+    <frameName>evarobot/kinect_link</frameName>
+    <pointCloudCutoff>0.5</pointCloudCutoff>
+    <distortionK1>0.00000001</distortionK1>
+    <distortionK2>0.00000001</distortionK2>
+    <distortionK3>0.00000001</distortionK3>
+    <distortionT1>0.00000001</distortionT1>
+    <distortionT2>0.00000001</distortionT2>
+    <CxPrime>0</CxPrime>
+    <Cx>0</Cx>
+    <Cy>0</Cy>
+    <focalLength>0</focalLength>
+    <hackBaseline>0</hackBaseline>
+  </plugin>
+    </sensor>
+</gazebo>
+
+<!-- ////////////////////////////////////////////////////////////////// -->
+<!-- ////////////////////////////   BUMPER   ////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////// -->
+
+<!-- Bumper0 Link -->
+  <link name="bumper0">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.015 0.105 0.020"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.015 0.105 0.020"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+  <!-- Bumper0 joint -->
+   <joint name="bumper0_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.1575 -0.105 -0.1345" rpy="0 0 -0.34"/>
+    <parent link="base_link"/>
+    <child link="bumper0"/>
+  </joint>
+  
+  <!-- Bumper0 plugin -->
+	<gazebo reference="bumper0">
+	  <sensor name="bumper0" type="contact">
+		<always_on>true</always_on>
+		<update_rate>10.0</update_rate>
+		<contact>
+		  <collision>bumper0_collision</collision>
+		</contact>
+		<plugin name="bumper0_plugin" filename="libim_gazebo_ros_bumper.so">
+		  <bumperTopicName>bumper0_topic</bumperTopicName>
+		  <frameName>bumper0_frame</frameName>
+		</plugin>
+	  </sensor>
+	</gazebo>
+	
+<!-- Bumper1 Link -->
+  <link name="bumper1">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.015 0.10 0.020"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.015 0.10 0.020"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+  <!-- Bumper1 joint -->
+   <joint name="bumper1_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.1775 0 -0.1345" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="bumper1"/>
+  </joint>
+  
+  <!-- Bumper1 plugin -->
+	<gazebo reference="bumper1">
+	  <sensor name="bumper1" type="contact">
+		<always_on>true</always_on>
+		<update_rate>10.0</update_rate>
+		<contact>
+		  <collision>bumper1_collision</collision>
+		</contact>
+		<plugin name="bumper1_plugin" filename="libim_gazebo_ros_bumper.so">
+		  <bumperTopicName>bumper1_topic</bumperTopicName>
+		  <frameName>bumper1_frame</frameName>
+		</plugin>
+	  </sensor>
+	</gazebo>
+	
+<!-- Bumper2 Link -->
+  <link name="bumper2">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.015 0.105 0.020"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+		<box size="0.015 0.105 0.020"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  
+  <!-- Bumper2 joint -->
+   <joint name="bumper2_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.1605 0.105 -0.1345" rpy="0 0 0.34"/>
+    <parent link="base_link"/>
+    <child link="bumper2"/>
+  </joint>
+  
+  <!-- Bumper2 plugin -->
+	<gazebo reference="bumper2">
+	  <sensor name="bumper2" type="contact">
+		<always_on>true</always_on>
+		<update_rate>10.0</update_rate>
+		<contact>
+		  <collision>bumper2_collision</collision>
+		</contact>
+		<plugin name="bumper2_plugin" filename="libim_gazebo_ros_bumper.so">
+		  <bumperTopicName>bumper2_topic</bumperTopicName>
+		  <frameName>bumper2_frame</frameName>
+		</plugin>
+	  </sensor>
+	</gazebo>
+	
+	
+<!-- ////////////////////////////////////////////////////////////////// -->
+<!-- ////////////////////////   BUMPER (END) ////////////////////////// -->
+<!-- ////////////////////////////////////////////////////////////////// -->
+
+
+  <joint name="imu_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0 0 0.19"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+  </joint>
+
+
+<link name="imu_link">
+  <inertial>
+    <mass value="0.001"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.0001"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box size="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <box size=".001 .001 .001"/>
+    </geometry>
+  </collision>
+</link>
+
+
+<gazebo>
+	<plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+        <alwaysOn>true</alwaysOn>
+        <robotNamespace>gazebo</robotNamespace>    
+        <frameName>imu_frame</frameName>   
+        <bodyName>imu_link</bodyName>
+        <topicName>sensor/IMU</topicName>
+        <serviceName>imu_service</serviceName>
+        <gaussianNoise>0.0</gaussianNoise>
+        <updateRate>10.0</updateRate> 
+    </plugin>
+</gazebo>
+
+<!-- SONAR -->
+
+
+  <joint name="sonar0_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0.14 0 0.0275"/>
+    <parent link="base_link"/>
+    <child link="sonar0_link"/>
+  </joint>
+
+<link name="sonar0_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+<!-- Sonar0 Plugin -->
+ <gazebo reference="sonar0_link">
+      <sensor type="ray" name="sonar0">
+	  <pose>0 0 0 0 0 0</pose>
+	<ray>
+          <scan>
+            <horizontal>
+      	      <samples>320</samples>
+      	      <resolution>1</resolution>
+      	      <min_angle>-0.479965544</min_angle>
+      	      <max_angle>0.479965544</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>5</max>
+            <resolution>0.01</resolution>
+          </range>
+	</ray>
+	<plugin name="sonar0_plugin" filename="libim_gazebo_ros_sonar.so">
+          <topicName>gazebo/sensor/Sonar0</topicName>
+          <frameName>sonar0_link</frameName>
+	  <frameId>sonar_base_link0</frameId>
+	  <radiation>ultrasound</radiation>
+	  <fov>0.05</fov>
+	  <gaussianNoise>0</gaussianNoise>
+	</plugin>
+        <always_on>1</always_on>
+        <update_rate>4</update_rate>
+        <visualize>false</visualize>
+      </sensor>
+    </gazebo>
+    
+    <!-- Sonar 1 -->
+  <joint name="sonar1_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0.0 0.145 0.0275" rpy="0 0 1.5708"/>
+    <parent link="base_link"/>
+    <child link="sonar1_link"/>
+  </joint>
+
+<link name="sonar1_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+<!-- Sonar1 Plugin -->
+ <gazebo reference="sonar1_link">
+      <sensor type="ray" name="sonar1">
+	  <pose>0 0 0 0 0 0</pose>
+	<ray>
+          <scan>
+            <horizontal>
+      	      <samples>320</samples>
+      	      <resolution>1</resolution>
+      	      <min_angle>-0.479965544</min_angle>
+      	      <max_angle>0.479965544</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>5</max>
+            <resolution>0.01</resolution>
+          </range>
+	</ray>
+	<plugin name="sonar1_plugin" filename="libim_gazebo_ros_sonar.so">
+          <topicName>gazebo/sensor/Sonar1</topicName>
+          <frameName>sonar1_link</frameName>
+	  <frameId>sonar_base_link1</frameId>
+	  <radiation>ultrasound</radiation>
+	  <fov>0.05</fov>
+	  <gaussianNoise>0</gaussianNoise>
+	</plugin>
+        <always_on>1</always_on>
+        <update_rate>4</update_rate>
+        <visualize>false</visualize>
+      </sensor>
+    </gazebo>
+    
+      <!-- Sonar 2 -->
+  <joint name="sonar2_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+     <origin xyz="-0.14 0 0.0275" rpy="0 0 3.1416"/>
+    <parent link="base_link"/>
+    <child link="sonar2_link"/>
+  </joint>
+
+<link name="sonar2_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+<!-- Sonar2 Plugin -->
+ <gazebo reference="sonar2_link">
+      <sensor type="ray" name="sonar2">
+	  <pose>0 0 0 0 0 0</pose>
+	<ray>
+          <scan>
+            <horizontal>
+      	      <samples>320</samples>
+      	      <resolution>1</resolution>
+      	      <min_angle>-0.479965544</min_angle>
+      	      <max_angle>0.479965544</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>5</max>
+            <resolution>0.01</resolution>
+          </range>
+	</ray>
+	<plugin name="sonar2_plugin" filename="libim_gazebo_ros_sonar.so">
+          <topicName>gazebo/sensor/Sonar2</topicName>
+          <frameName>sonar2_link</frameName>
+	  <frameId>sonar_base_link2</frameId>
+	  <radiation>ultrasound</radiation>
+	  <fov>0.05</fov>
+	  <gaussianNoise>0</gaussianNoise>
+	</plugin>
+        <always_on>1</always_on>
+        <update_rate>4</update_rate>
+        <visualize>false</visualize>
+      </sensor>
+    </gazebo>
+    
+  
+     <!-- Sonar 3 -->
+  <joint name="sonar3_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0.0 -0.145 0.0275" rpy="0 0 -1.5708"/>
+    <parent link="base_link"/>
+    <child link="sonar3_link"/>
+  </joint>
+
+<link name="sonar3_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+<!-- Sonar3 Plugin -->
+ <gazebo reference="sonar3_link">
+      <sensor type="ray" name="sonar3">
+	  <pose>0 0 0 0 0 0</pose>
+	<ray>
+          <scan>
+            <horizontal>
+      	      <samples>320</samples>
+      	      <resolution>1</resolution>
+      	      <min_angle>-0.479965544</min_angle>
+      	      <max_angle>0.479965544</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>5</max>
+            <resolution>0.01</resolution>
+          </range>
+	</ray>
+	<plugin name="sonar3_plugin" filename="libim_gazebo_ros_sonar.so">
+          <topicName>gazebo/sensor/Sonar3</topicName>
+          <frameName>sonar3_link</frameName>
+	  <frameId>sonar_base_link3</frameId>
+	  <radiation>ultrasound</radiation>
+	  <fov>0.05</fov>
+	  <gaussianNoise>0</gaussianNoise>
+	</plugin>
+        <always_on>1</always_on>
+        <update_rate>4</update_rate>
+        <visualize>false</visualize>
+      </sensor>
+    </gazebo>
+  
+    
+     <!-- IR 0 -->
+  <joint name="ir0_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0.1175 -0.085 -0.1075" rpy="0 0 -0.60"/>
+    <parent link="base_link"/>
+    <child link="ir0_link"/>
+  </joint>
+
+<link name="ir0_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+<!-- IR0 Plugin -->
+ <gazebo reference="ir0_link">
+      <sensor type="ray" name="ir0">
+	  <pose>0 0 0 0 0 0</pose>
+	<ray>
+          <scan>
+            <horizontal>
+      	      <samples>320</samples>
+      	      <resolution>1</resolution>
+      	      <min_angle>-0.001</min_angle>
+      	      <max_angle>0.001</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>5</max>
+            <resolution>0.01</resolution>
+          </range>
+	</ray>
+	<plugin name="ir0_plugin" filename="libim_gazebo_ros_sonar.so">
+          <topicName>gazebo/sensor/IR0</topicName>
+          <frameName>ir0_link</frameName>
+	  <frameId>ir0_link</frameId>
+	  <radiation>infrared</radiation>
+	  <fov>0.05</fov>
+	  <gaussianNoise>0</gaussianNoise>
+	</plugin>
+        <always_on>1</always_on>
+        <update_rate>4</update_rate>
+        <visualize>false</visualize>
+      </sensor>
+    </gazebo>  
+    
+    
+    <!-- IR 1 -->
+  <joint name="ir1_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0.1475 0 -0.1075" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="ir1_link"/>
+  </joint>
+
+<link name="ir1_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+<!-- IR1 Plugin -->
+ <gazebo reference="ir1_link">
+      <sensor type="ray" name="ir1">
+	  <pose>0 0 0 0 0 0</pose>
+	<ray>
+          <scan>
+            <horizontal>
+      	      <samples>320</samples>
+      	      <resolution>1</resolution>
+      	      <min_angle>-0.001</min_angle>
+      	      <max_angle>0.001</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>5</max>
+            <resolution>0.01</resolution>
+          </range>
+	</ray>
+	<plugin name="ir1_plugin" filename="libim_gazebo_ros_sonar.so">
+          <topicName>gazebo/sensor/IR1</topicName>
+          <frameName>ir1_link</frameName>
+	  <frameId>ir1_link</frameId>
+	  <radiation>infrared</radiation>
+	  <fov>0.05</fov>
+	  <gaussianNoise>0</gaussianNoise>
+	</plugin>
+        <always_on>1</always_on>
+        <update_rate>4</update_rate>
+        <visualize>false</visualize>
+      </sensor>
+    </gazebo>   
+    
+    <!-- IR 2 -->
+  <joint name="ir2_joint" type="fixed">
+    <axis xyz="1 0 0"/> <!-- 0 1 0 -->
+    <origin xyz="0.1225 0.085 -0.1075" rpy="0 0 0.60"/>
+    <parent link="base_link"/>
+    <child link="ir2_link"/>
+  </joint>
+
+<link name="ir2_link">
+      <inertial>
+        <mass value="0.001" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <inertia ixx="0.000000017" ixy="0" ixz="0" iyy="0.000000017" iyz="0" izz="0.000000017" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+<!-- IR2 Plugin -->
+ <gazebo reference="ir2_link">
+      <sensor type="ray" name="ir2">
+	  <pose>0 0 0 0 0 0</pose>
+	<ray>
+          <scan>
+            <horizontal>
+      	      <samples>320</samples>
+      	      <resolution>1</resolution>
+      	      <min_angle>-0.001</min_angle>
+      	      <max_angle>0.001</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.02</min>
+            <max>5</max>
+            <resolution>0.01</resolution>
+          </range>
+	</ray>
+	<plugin name="ir2_plugin" filename="libim_gazebo_ros_sonar.so">
+          <topicName>gazebo/sensor/IR2</topicName>
+          <frameName>ir2_link</frameName>
+	  <frameId>ir2_link</frameId>
+	  <radiation>infrared</radiation>
+	  <fov>0.05</fov>
+	  <gaussianNoise>0</gaussianNoise>
+	</plugin>
+        <always_on>1</always_on>
+        <update_rate>4</update_rate>
+        <visualize>false</visualize>
+      </sensor>
+    </gazebo>    
+    
+
+</robot>
+

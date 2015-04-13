@@ -1,0 +1,37 @@
+<launch>
+
+  <include file="$(find evarobot_description)/launch/empty_world.launch">
+  <arg name="world_name" value="$(find evarobot_description)/worlds/UPlat.sdf"/> 
+  </include>
+  
+ <arg name="name" default="evarobot"/>
+ <arg name="model" default="$(find evarobot_description)/urdf/evarobot.urdf"/>
+ 
+  <arg name="x" default="2.5"/>
+  <arg name="y" default="2.5"/>
+  <arg name="z" default="0"/>
+  <arg name="min" default="0"/>
+  <arg name="max" default="0"/>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />
+ 
+ 
+ <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+     args="-param robot_description
+           -urdf
+           -x $(arg x)
+           -y $(arg y)
+           -z $(arg z)
+           -model $(arg name)
+           -min $(arg min)
+	   -max $(arg max)"     
+  respawn="false" output="screen"/>
+  
+  
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <remap from="/joint_states" to="/joint_states" />
+  </node>
+  <node name="joint_state_publisher" pkg="joint_state_publisher"
+	type="joint_state_publisher" />
+ 
+</launch>
