@@ -1,14 +1,15 @@
 <launch>
 
   <include file="$(find evarobot_description)/launch/empty_world.launch">
-  <arg name="world_name" value="$(find ateks)/worlds/UPlat.sdf"/> 
+<!--  <arg name="world_name" value="$(find evarobot_description)/worlds/UPlat.sdf"/>  -->
+  <arg name="world_name" value="$(find evarobot_description)/worlds/map2.sdf"/>
   </include>
   
  <arg name="name" default="evarobot"/>
  <arg name="model" default="$(find evarobot_description)/urdf/evarobot.urdf"/>
  
-  <arg name="x" default="0.0"/>
-  <arg name="y" default="1.0"/>
+  <arg name="x" default="2.5"/>
+  <arg name="y" default="2.5"/>
   <arg name="z" default="0"/>
   <arg name="min" default="0"/>
   <arg name="max" default="0"/>

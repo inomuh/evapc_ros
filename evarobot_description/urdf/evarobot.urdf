@@ -30,7 +30,8 @@
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
 		<!--  <box size="0.3445 0.251 0.3005"/> -->
-		<box size="0.30 0.251 0.3005"/>
+		<!-- <box size="0.30 0.251 0.3005"/> -->
+		<box size="0.25 0.251 0.3005"/>
       </geometry>
     </collision>
 
@@ -282,7 +283,17 @@
   </joint>
   
   <!-- Kinect plugin -->
-  
+   <link name="kinect_dummy">
+      <pose>0 0 0 0 0 0</pose>
+	</link>
+	
+    <joint name="kinect_joint_dummy" type="fixed">
+      <origin xyz="0 0 0" rpy="-1.57 0 -1.57"/>
+      <parent link="evarobot/kinect_link"/>
+      <child link="kinect_dummy"/>
+      <axis xyz="0 1 0"/>
+    </joint> 
+ 
 <gazebo reference="evarobot/kinect_link">
     <sensor type="depth" name="openni_camera_camera">       
         <always_on>1</always_on>
@@ -290,8 +301,8 @@
         <camera>
             <horizontal_fov>1.047</horizontal_fov>  
             <image>
-                <width>160</width>
-                <height>120</height>
+                <width>640</width>
+                <height>480</height>
                 <format>R8G8B8</format>
             </image>
             <depth_camera>
@@ -313,7 +324,7 @@
     <depthImageTopicName>/kinect/depth/image_raw</depthImageTopicName>
     <depthImageInfoTopicName>/kinect/depth/camera_info</depthImageInfoTopicName>
     <pointCloudTopicName>/kinect/depth/points</pointCloudTopicName>
-    <frameName>evarobot/kinect_link</frameName>
+    <frameName>kinect_dummy</frameName>
     <pointCloudCutoff>0.5</pointCloudCutoff>
     <distortionK1>0.00000001</distortionK1>
     <distortionK2>0.00000001</distortionK2>
@@ -571,9 +582,9 @@
 	<plugin name="sonar0_plugin" filename="libim_gazebo_ros_sonar.so">
           <topicName>gazebo/sensor/Sonar0</topicName>
           <frameName>sonar0_link</frameName>
-	  <frameId>sonar_base_link0</frameId>
+	  <frameId>sonar0_link</frameId>
 	  <radiation>ultrasound</radiation>
-	  <fov>0.05</fov>
+	  <fov>0.7</fov>
 	  <gaussianNoise>0</gaussianNoise>
 	</plugin>
         <always_on>1</always_on>
@@ -632,9 +643,9 @@
 	<plugin name="sonar1_plugin" filename="libim_gazebo_ros_sonar.so">
           <topicName>gazebo/sensor/Sonar1</topicName>
           <frameName>sonar1_link</frameName>
-	  <frameId>sonar_base_link1</frameId>
+	  <frameId>sonar1_link</frameId>
 	  <radiation>ultrasound</radiation>
-	  <fov>0.05</fov>
+	  <fov>0.7</fov>
 	  <gaussianNoise>0</gaussianNoise>
 	</plugin>
         <always_on>1</always_on>
@@ -693,9 +704,9 @@
 	<plugin name="sonar2_plugin" filename="libim_gazebo_ros_sonar.so">
           <topicName>gazebo/sensor/Sonar2</topicName>
           <frameName>sonar2_link</frameName>
-	  <frameId>sonar_base_link2</frameId>
+	  <frameId>sonar2_link</frameId>
 	  <radiation>ultrasound</radiation>
-	  <fov>0.05</fov>
+	  <fov>0.7</fov>
 	  <gaussianNoise>0</gaussianNoise>
 	</plugin>
         <always_on>1</always_on>
@@ -755,9 +766,9 @@
 	<plugin name="sonar3_plugin" filename="libim_gazebo_ros_sonar.so">
           <topicName>gazebo/sensor/Sonar3</topicName>
           <frameName>sonar3_link</frameName>
-	  <frameId>sonar_base_link3</frameId>
+	  <frameId>sonar3_link</frameId>
 	  <radiation>ultrasound</radiation>
-	  <fov>0.05</fov>
+	  <fov>0.7</fov>
 	  <gaussianNoise>0</gaussianNoise>
 	</plugin>
         <always_on>1</always_on>
@@ -819,7 +830,7 @@
           <frameName>ir0_link</frameName>
 	  <frameId>ir0_link</frameId>
 	  <radiation>infrared</radiation>
-	  <fov>0.05</fov>
+	  <fov>0.01</fov>
 	  <gaussianNoise>0</gaussianNoise>
 	</plugin>
         <always_on>1</always_on>
@@ -881,7 +892,7 @@
           <frameName>ir1_link</frameName>
 	  <frameId>ir1_link</frameId>
 	  <radiation>infrared</radiation>
-	  <fov>0.05</fov>
+	  <fov>0.01</fov>
 	  <gaussianNoise>0</gaussianNoise>
 	</plugin>
         <always_on>1</always_on>
@@ -942,7 +953,7 @@
           <frameName>ir2_link</frameName>
 	  <frameId>ir2_link</frameId>
 	  <radiation>infrared</radiation>
-	  <fov>0.05</fov>
+	  <fov>0.01</fov>
 	  <gaussianNoise>0</gaussianNoise>
 	</plugin>
         <always_on>1</always_on>

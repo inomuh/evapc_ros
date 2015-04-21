@@ -69,6 +69,8 @@ private:
   std::string topic_;
   std::string frame_id_;
 
+  double d_field_of_view;
+
   SensorModel sensor_model_;
 
   UpdateTimer updateTimer;

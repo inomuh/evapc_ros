@@ -83,11 +83,15 @@ void GazeboRosSonar::Load(sensors::SensorPtr _sensor, sdf::ElementPtr _sdf)
   if (_sdf->HasElement("topicName"))
     topic_ = _sdf->GetElement("topicName")->GetValue()->GetAsString();
 
+  if (_sdf->HasElement("fov"))
+     //_sdf->GetElement("fov")->Get<double>(&d_field_of_view)
+     d_field_of_view = _sdf->GetElement("fov")->GetValueDouble();
   sensor_model_.Load(_sdf);
 
   range_.header.frame_id = frame_id_;
   range_.radiation_type = sensor_msgs::Range::ULTRASOUND;
-  range_.field_of_view = std::min(fabs((sensor_->GetAngleMax() - sensor_->GetAngleMin()).Radian()), fabs((sensor_->GetVerticalAngleMax() - sensor_->GetVerticalAngleMin()).Radian()));
+  range_.field_of_view = d_field_of_view;
+//std::min(fabs((sensor_->GetAngleMax() - sensor_->GetAngleMin()).Radian()), fabs((sensor_->GetVerticalAngleMax() - sensor_->GetVerticalAngleMin()).Radian()));
   range_.max_range = sensor_->GetRangeMax();
   range_.min_range = sensor_->GetRangeMin();
 
