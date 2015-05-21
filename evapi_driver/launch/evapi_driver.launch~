@@ -1,0 +1,9 @@
+<launch>
+	<master auto="start"/>
+	
+	<!-- Run evarobotL_driver -->
+	<node pkg="evarobotL_driver" type="evarobotL_driver" respawn="false" name="evarobotL_driver" output="screen">
+		<rosparam file="$(find evarobotL_driver)/params/evarobotL_driver_params.yaml" command="load"/>
+	</node>
+	
+</launch>

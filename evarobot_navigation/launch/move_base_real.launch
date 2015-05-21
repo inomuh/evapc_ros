@@ -1,0 +1,18 @@
+<launch>
+  <master auto="start"/>
+<node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="-0.09 0 0.4275  1.5708 0 0 base_link laser 100" />
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find evarobot_navigation)/map/map.yaml"/>
+
+  <!--- Run AMCL -->
+  <include file="$(find amcl)/examples/amcl_diff.launch" />
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find evarobot_navigation)/params/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find evarobot_navigation)/params/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find evarobot_navigation)/params/base_local_planner_params.yaml" command="load" />
+  </node>
+</launch>
