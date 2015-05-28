@@ -8,23 +8,16 @@
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_base.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_caster.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_wheel.urdf.xacro"/>
-  
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_ahrs.urdf.xacro"/> 
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_sonar.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_infrared.urdf.xacro"/> 
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_kinect.urdf.xacro"/> 
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_lidar.urdf.xacro"/> 
-
-
-  <!--
-  
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_bumper.urdf.xacro"/> 
- -->
+
 
  <!-- Differential Drive Plugin -->
- 
- 
-  <gazebo>
+ <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
 	  <alwaysOn>true</alwaysOn>
 	  <updateRate>10.0</updateRate> 
@@ -44,12 +37,10 @@
     </plugin>
   </gazebo>
 
-		
-<!--
-  <gazebo>
-	<plugin name="MultipleContact" filename="libevarobot_ros_bumper.so"/>
+	<gazebo>
+		<plugin name="MultipleContact" filename="libevarobot_ros_bumper.so"/>
   </gazebo>
--->
+
 
   <!-- Base -->
   <xacro:evarobot_base prefix="base" 
@@ -135,7 +126,7 @@
 						 camera_name="camera" /> 
 				 
   <!-- Bumper -->
-  <!--
+  
   <xacro:evarobot_bumper prefix="bumper0"
 						 joint_x="0.1575" 
 						 joint_y="-0.105" 
@@ -150,6 +141,8 @@
 						 parent_link="base_link"
 						 topic_name="bumper0"
 						 frame_name="bumper0_link" />
+	
+				 
 						 
   <xacro:evarobot_bumper prefix="bumper1"
 						 joint_x="0.1775" 
@@ -166,6 +159,8 @@
 						 topic_name="bumper1"
 						 frame_name="bumper1_link" />
 						 
+
+						 
   <xacro:evarobot_bumper prefix="bumper2"
 						 joint_x="0.1605" 
 						 joint_y="0.105" 
@@ -180,7 +175,8 @@
 						 parent_link="base_link"
 						 topic_name="bumper2"
 						 frame_name="bumper2_link" />
--->
+
+
   <!-- AHRS/IMU -->
   <xacro:evarobot_ahrs prefix="imu"
 					   joint_x="0.0" 

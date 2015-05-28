@@ -43,8 +43,8 @@
 		</joint>
 
 		<!-- Bumper plugin -->
-<!--		<gazebo reference="${prefix}_link">
-			<sensor name="${prefix}_link" type="contact">
+		<gazebo reference="${prefix}_link">
+			<sensor name="${prefix}" type="contact">
 				<always_on>true</always_on>
 				<update_rate>${update_rate}</update_rate>
 				<contact>
@@ -52,11 +52,10 @@
 				</contact>
 				<plugin name="${prefix}_plugin" filename="libim_gazebo_ros_bumper.so">
 					<bumperTopicName>${topic_name}</bumperTopicName>
-					<frameName>${frame_name}</frameName>
-					<robotNamespace>evarobot</robotNamespace>
-					<tf_prefix>${prefix}</tf_prefix>
+				<frameName>${frame_name}</frameName>
 				</plugin>
 			</sensor>
-		</gazebo> -->
+	</gazebo>	
+			
 	</xacro:macro>
 </robot>
