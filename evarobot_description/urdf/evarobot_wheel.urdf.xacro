@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<robot name="evarobot" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="evarobot_wheel" params="prefix joint_x joint_y joint_z joint_roll joint_pitch joint_yaw cylinder_length cylinder_radius parent_link">
+
+		<link name="${prefix}_link">
+			<collision>
+				<origin rpy="1.57075 0 0" xyz="0 0 0"/>
+				<geometry>
+					<cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>
+				</geometry>
+			</collision>
+
+			<!--
+			<visual>
+				<origin rpy="0 -1.57075 0" xyz="0 0 +0.01"/>
+				<geometry>
+					<cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>  
+					<mesh filename="package://evarobot_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+				</geometry>
+				<material name="black"/> 		
+			</visual>
+			-->
+
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<mass value="0.75"/>
+				<inertia ixx="1e-2" ixy="0" ixz="0" iyy="1e-2" iyz="0" izz="1e-2" />
+			</inertial>
+
+		</link>
+
+		<joint name="${prefix}_joint" type="continuous">
+			<axis xyz="0 1 0"/>
+			<parent link="${parent_link}"/>
+			<child link="${prefix}_link"/>
+			<origin rpy="${joint_roll} ${joint_pitch} ${joint_yaw}" xyz="${joint_x} ${joint_y} ${joint_z}"/>
+			<limit effort="100" velocity="100"/>
+			<joint_properties damping="0.0" friction="0.0"/>
+		</joint>
+
+	</xacro:macro>
+</robot>
+
+

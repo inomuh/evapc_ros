@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="evarobot_caster" params="prefix radius x y z roll pitch yaw axis_x axis_y axis_z parent_link">
+
+		<link name="${prefix}_link">
+			<collision>
+				<origin rpy="0 0 0" xyz="0 0 0"/>
+				<geometry>
+					<sphere radius="${radius}"/>
+				</geometry>
+			</collision>
+
+			<visual>
+				<geometry>
+					<sphere radius="${radius}"/>
+				</geometry>
+				<material name="black">
+					<color rgba="0 0 0 1"/>
+				</material>
+			</visual>
+
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<mass value="5"/>
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>
+		</link>
+
+		<gazebo reference="${prefix}_link">
+			<mu1>0.2</mu1>
+			<mu2>0.2</mu2>
+		</gazebo>
+
+		<joint name="${prefix}_joint" type="continuous">
+			<parent link="${parent_link}"/>
+			<child link="${prefix}_link"/>
+			<origin rpy="${roll} ${pitch} ${yaw}" xyz="${x} ${y} ${z}"/>
+			<axis xyz="${axis_x} ${axis_y} ${axis_z}"/>
+			<limit effort="100" velocity="100"/>
+			<joint_properties damping="0.0" friction="0.0"/>
+		</joint>
+
+	</xacro:macro>  
+</robot>
+

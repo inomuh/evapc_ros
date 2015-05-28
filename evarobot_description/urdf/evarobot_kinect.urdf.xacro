@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:macro name="evarobot_kinect" 
+	params="prefix
+			joint_x joint_y joint_z joint_roll joint_pitch joint_yaw
+			parent_link
+			base_line update_rate
+			camera_name
+			"> 
+		
+		<!-- Kinect Link -->
+		<link name="${prefix}_link">
+		
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<box size="0.1 0.1 0.1"/>
+				</geometry>
+			</collision>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<geometry>
+					<mesh filename="package://evarobot_description/meshes/kinect.dae"/>
+				</geometry>
+			</visual>
+
+			<inertial>
+				<mass value="1e-5" />
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+			</inertial>
+		</link>
+
+		<!-- Kinect Joint -->
+		<joint name="${prefix}_joint" type="fixed">
+			<axis xyz="0 1 0" />
+			<origin xyz="${joint_x} ${joint_y} ${joint_z}" rpy="0 0 0"/>
+			<parent link="${parent_link}"/>
+			<child link="${prefix}_link"/>
+		</joint>
+
+		<!-- Kinect Dummy Link -->
+		<link name="kinect_dummy">
+			<pose>0 0 0 0 0 0</pose>
+		</link>
+
+		<!-- Kinect Dummy Joint -->
+		<joint name="kinect_joint_dummy" type="fixed">
+			<origin xyz="0 0 0" rpy="${joint_roll} ${joint_pitch} ${joint_yaw}"/>
+			<parent link="${prefix}_link"/>
+			<child link="kinect_dummy"/>
+			<axis xyz="0 1 0"/>
+		</joint> 
+		<!-- Kinect Gazebo Plugin -->
+		<gazebo reference="${prefix}_link">
+			<sensor type="depth" name="openni_camera_camera">       
+				<always_on>1</always_on>
+				<visualize>false</visualize>   
+						  
+				<camera>
+					<horizontal_fov>1.047</horizontal_fov>  
+					<image>
+						<width>640</width>
+						<height>480</height>
+						<format>R8G8B8</format>
+					</image>
+					
+					<depth_camera>
+
+					</depth_camera>
+					
+					<clip>
+						<near>0.2</near>
+						<far>100</far>
+					</clip>
+				</camera>
+				
+				
+				<plugin name="${prefix}_controller" filename="libgazebo_ros_openni_kinect.so">
+					<baseline>${base_line}</baseline>
+					<alwaysOn>true</alwaysOn>
+					<updateRate>${update_rate}</updateRate>
+					<cameraName>${camera_name}</cameraName>
+					<imageTopicName>/${camera_name}/depth/image_raw</imageTopicName>
+					<depthImageCameraInfoTopicName>${camera_name}/depth/image_camera_info</depthImageCameraInfoTopicName>
+					<pointCloudCutoffMax>5.0</pointCloudCutoffMax>
+					<cameraInfoTopicName>/${camera_name}/depth/camera_info</cameraInfoTopicName>
+					<depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
+					<depthImageInfoTopicName>/${camera_name}/depth/camera_info</depthImageInfoTopicName>
+					<pointCloudTopicName>/${camera_name}/depth/points</pointCloudTopicName>
+					<frameName>kinect_dummy</frameName>
+					<pointCloudCutoff>0.5</pointCloudCutoff>
+					<distortionK1>0.00000001</distortionK1>
+					<distortionK2>0.00000001</distortionK2>
+					<distortionK3>0.00000001</distortionK3>
+					<distortionT1>0.00000001</distortionT1>
+					<distortionT2>0.00000001</distortionT2>
+					<CxPrime>0</CxPrime>
+					<Cx>0</Cx>
+					<Cy>0</Cy>
+					<focalLength>0</focalLength>
+					<hackBaseline>0</hackBaseline>
+				</plugin>
+				
+			</sensor>
+		</gazebo>
+
+
+
+	</xacro:macro>
+</robot>
