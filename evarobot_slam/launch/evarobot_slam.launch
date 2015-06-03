@@ -1,0 +1,14 @@
+<launch>
+
+  <!-- Run multimaster_fkie -->
+  <include file="$(find master_discovery_fkie)/launch/master_discovery.launch" />
+  <include file="$(find master_sync_fkie)/launch/master_sync.launch" />
+  
+  <!-- Run state publisher -->
+  <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" />
+  
+  
+  <include file="$(find evarobot_slam)/launch/rplidar.launch" />
+  <include file="$(find evarobot_slam)/launch/hectormapping.launch" />
+</launch>
+

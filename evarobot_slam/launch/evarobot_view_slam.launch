@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(find evarobot_slam)/launch/rplidar.launch" />
+  <include file="$(find evarobot_slam)/launch/hectormapping.launch" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_slam)/rviz/slam.rviz" />
+</launch>
+

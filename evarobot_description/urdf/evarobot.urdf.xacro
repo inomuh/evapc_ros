@@ -92,7 +92,27 @@
 						 parent_link="base_link" />
 						 
   <!-- Lidar -->
-  <xacro:evarobot_lidar prefix="lidar" 
+  <xacro:evarobot_lidar prefix="sensor/lidar" 
+                        joint_x="-0.09" 
+                        joint_y="0.0" 
+                        joint_z="0.4275" 
+                        joint_roll="0.0" 
+                        joint_pitch="0.0" 
+                        joint_yaw="-1.5708" 
+												update_rate="40" 
+												samples="720" 
+												resolution="1" 
+												min_angle="-3.1416" 
+												max_angle="3.1416"
+												min_range="0.5" 
+												max_range="5.0" 
+												range_resolution="0.1"
+												parent_link="base_link"
+												robot_namespace="evarobot" 
+												topic_name="lidar" 
+												frame_name="sensor/lidar_link" /> 
+<!--
+  <xacro:evarobot_lidar prefix="sensor/lidar" 
                         joint_x="0.0" 
                         joint_y="0.0" 
                         joint_z="0.112" 
@@ -110,13 +130,14 @@
 												parent_link="base_link"
 												robot_namespace="evarobot" 
 												topic_name="lidar" 
-												frame_name="lidar_link" /> 
+												frame_name="sensor/lidar_link" /> 
+-->												
 				
   <!-- Kinect -->
-   <xacro:evarobot_kinect prefix="kinect"
-						 joint_x="-0.09" 
+   <xacro:evarobot_kinect prefix="sensor/kinect"
+						 joint_x="0.0" 
 						 joint_y="0.0" 
-						 joint_z="0.4275" 
+						 joint_z="0.112" 
 						 joint_roll="0.0" 
 						 joint_pitch="0.0" 
 						 joint_yaw="0.0"
@@ -178,7 +199,7 @@
 
 
   <!-- AHRS/IMU -->
-  <xacro:evarobot_ahrs prefix="imu"
+  <xacro:evarobot_ahrs prefix="sensor/imu"
 					   joint_x="0.0" 
 					   joint_y="0.0" 
 					   joint_z="0.19" 
@@ -187,14 +208,14 @@
 					   joint_yaw="0.0" 
 					   parent_link="base_link" 
 					   topic_name="imu" 
-					   frame_name="imu_link" 
+					   frame_name="sensor/imu_link" 
 					   update_rate="10.0" 
 					   service_name="imu_service" 
 					   robot_namespace="evarobot" />
 				   
   <!-- Sonar -->
   
-  <xacro:evarobot_sonar prefix="sonar0"
+  <xacro:evarobot_sonar prefix="sensor/sonar0"
 						joint_x="0.14" 
 						joint_y="0.0" 
 						joint_z="0.0275" 
@@ -210,10 +231,10 @@
 						min_range="0.02" 
 						max_range="5.0"
 						topic_name="sonar0" 
-						frame_name="sonar0_link"
+						frame_name="sensor/sonar0_link"
 						update_rate="4" />
 						
-  <xacro:evarobot_sonar prefix="sonar1"
+  <xacro:evarobot_sonar prefix="sensor/sonar1"
 						joint_x="0.0" 
 						joint_y="0.145" 
 						joint_z="0.0275" 
@@ -229,10 +250,10 @@
 						min_range="0.02" 
 						max_range="5.0"
 						topic_name="sonar1" 
-						frame_name="sonar1_link"
+						frame_name="sensor/sonar1_link"
 						update_rate="4" />
 						
-  <xacro:evarobot_sonar prefix="sonar2"
+  <xacro:evarobot_sonar prefix="sensor/sonar2"
 						joint_x="-0.14" 
 						joint_y="0.0" 
 						joint_z="0.0275" 
@@ -248,10 +269,10 @@
 						min_range="0.02" 
 						max_range="5.0"
 						topic_name="sonar2" 
-						frame_name="sonar2_link"
+						frame_name="sensor/sonar2_link"
 						update_rate="4" />
 						
-  <xacro:evarobot_sonar prefix="sonar3"
+  <xacro:evarobot_sonar prefix="sensor/sonar3"
 						joint_x="0.0" 
 						joint_y="-0.145" 
 						joint_z="0.0275" 
@@ -267,12 +288,12 @@
 						min_range="0.02" 
 						max_range="5.0"
 						topic_name="sonar3" 
-						frame_name="sonar3_link"
+						frame_name="sensor/sonar3_link"
 						update_rate="4" />
 						
   <!-- Infrared -->
   
-  <xacro:evarobot_infrared prefix="ir0"
+  <xacro:evarobot_infrared prefix="sensor/ir0"
 						   joint_x="0.1175" 
 						   joint_y="-0.085" 
 						   joint_z="-0.1075" 
@@ -288,10 +309,10 @@
 						   min_range="0.10" 
 						   max_range="0.80"
 						   topic_name="ir0" 
-						   frame_name="ir0_link"
+						   frame_name="sensor/ir0_link"
 						   update_rate="4" /> 
 						   
-  <xacro:evarobot_infrared prefix="ir1"
+  <xacro:evarobot_infrared prefix="sensor/ir1"
 						   joint_x="0.1475" 
 						   joint_y="0.0" 
 						   joint_z="-0.1075" 
@@ -307,10 +328,10 @@
 						   min_range="0.10" 
 						   max_range="0.80"
 						   topic_name="ir1" 
-						   frame_name="ir1_link"
+						   frame_name="sensor/ir1_link"
 						   update_rate="4" /> 
 						   
-  <xacro:evarobot_infrared prefix="ir2"
+  <xacro:evarobot_infrared prefix="sensor/ir2"
 						   joint_x="0.1225" 
 						   joint_y="0.085" 
 						   joint_z="-0.1075" 
@@ -326,7 +347,7 @@
 						   min_range="0.10" 
 						   max_range="0.80"
 						   topic_name="ir2" 
-						   frame_name="ir2_link"
+						   frame_name="sensor/ir2_link"
 						   update_rate="4" /> 
 						   
 			

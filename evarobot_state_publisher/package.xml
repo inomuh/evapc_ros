@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>evarobot_navigation</name>
+  <name>evarobot_state_publisher</name>
   <version>0.0.0</version>
-  <description>The evarobot_navigation package</description>
+  <description>The evarobot_state_publisher package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
@@ -22,7 +22,7 @@
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/evarobot_navigation</url> -->
+  <!-- <url type="website">http://wiki.ros.org/evarobot_state_publisher</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
@@ -43,17 +43,28 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>move_base</build_depend>
   <build_depend>roscpp</build_depend>
-  <run_depend>move_base</run_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>nav_msgs</build_depend>
+
+
   <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>nav_msgs</run_depend>
 
+<!--
+  <build_depend>robot_state_publisher</build_depend>
+  <build_depend>evarobot_description</build_depend>
 
+  
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>evarobot_description</run_depend>
+
+-->
   <!-- The export tag contains other, unspecified, tags -->
   <export>
-    <!-- You can specify that this package is a metapackage here: -->
-    <!-- <metapackage/> -->
-
     <!-- Other tools can request additional information be placed here -->
 
   </export>

@@ -1,0 +1,20 @@
+<launch>
+  <master auto="start"/>
+
+  <!-- Run multimaster_fkie -->
+  <include file="$(find master_discovery_fkie)/launch/master_discovery.launch" />
+  <include file="$(find master_sync_fkie)/launch/master_sync.launch" />
+
+  <!-- Run state publisher -->
+  <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" />
+
+  <!-- Run lidar sensor -->
+	<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+
+  <!-- Run move_base -->
+  <include file="$(find evarobot_navigation)/launch/move_base_real.launch" />
+  
+  <!-- Run rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_navigation)/rviz/real_move.rviz" />
+
+</launch>
