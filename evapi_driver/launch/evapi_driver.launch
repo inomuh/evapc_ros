@@ -1,9 +1,0 @@
-<launch>
-	<master auto="start"/>
-	
-	<!-- Run evapi_driver -->
-	<node pkg="evapi_driver" type="evapi_driver" respawn="false" name="evapi_driver" output="screen">
-		<rosparam file="$(find evapi_driver)/params/evapi_driver_params.yaml" command="load"/>
-	</node>
-	
-</launch>

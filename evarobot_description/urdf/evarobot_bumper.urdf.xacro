@@ -3,12 +3,12 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 	<xacro:macro name="evarobot_bumper" 
 	params="prefix
-			joint_x joint_y joint_z joint_roll joint_pitch joint_yaw
 			box_x box_y box_z
 			update_rate
 			parent_link
 			topic_name
 			frame_name
+			*plate_name
 			">
 
 		<!-- Bumper Link -->
@@ -37,7 +37,8 @@
 		<!-- Bumper joint -->
 		<joint name="${prefix}_joint" type="fixed">
 			<axis xyz="0 1 0" />
-			<origin xyz="${joint_x} ${joint_y} ${joint_z}" rpy="${joint_roll} ${joint_pitch} ${joint_yaw}"/>
+			<xacro:insert_block name="plate_name" />
+			<!--	<origin xyz="${joint_x} ${joint_y} ${joint_z}" rpy="${joint_roll} ${joint_pitch} ${joint_yaw}"/> -->
 			<parent link="${parent_link}"/>
 			<child link="${prefix}_link"/>
 		</joint>

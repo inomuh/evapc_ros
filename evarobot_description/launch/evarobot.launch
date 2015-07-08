@@ -1,7 +1,7 @@
 <launch>
 
  <include file="$(find evarobot_description)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find evarobot_description)/worlds/UPlat.sdf"/>   <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+ <!--   <arg name="world_name" value="$(find evarobot_description)/worlds/UPlat.sdf"/>  -->  <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

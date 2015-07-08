@@ -1,14 +1,15 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+
 	<xacro:macro name="evarobot_sonar" 
 	params="prefix
-			joint_x joint_y joint_z joint_roll joint_pitch joint_yaw
 			parent_link
 			scan_samples scan_resolution min_angle max_angle
 			range_resolution min_range max_range
 			topic_name frame_name
 			update_rate
+			*plate_name
 			">
 
 
@@ -23,7 +24,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://evarobot_description/meshes/sonar_sensor/max_sonar_ez4.dae"/>
+					<mesh filename="package://evarobot_description/meshes/smo13.stl" scale="0.01 0.01 0.01"/>
 				</geometry>
 			</visual>
 			
@@ -37,7 +38,8 @@
 	
 		<joint name="${prefix}_joint" type="fixed">
 			<axis xyz="1 0 0" />
-			<origin xyz="${joint_x} ${joint_y} ${joint_z}" rpy="${joint_roll} ${joint_pitch} ${joint_yaw}"/>
+			<xacro:insert_block name="plate_name" />
+			<!--<origin xyz="${joint_x} ${joint_y} ${joint_z}" rpy="${joint_roll} ${joint_pitch} ${joint_yaw}"/>-->
 			<parent link="${parent_link}"/>
 			<child link="${prefix}_link"/>
 		</joint>
@@ -74,7 +76,7 @@
 				
 				<always_on>1</always_on>
 				<update_rate>${update_rate}</update_rate>
-				<visualize>false</visualize>
+				<visualize>true</visualize>
 			</sensor>
 		</gazebo>
 

@@ -19,7 +19,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
-					<mesh filename="package://evarobot_description/meshes/hokuyo.dae"/>
+					<mesh filename="package://evarobot_description/meshes/rplidar.stl" scale="0.01 0.01 0.01" />
 				</geometry>
 			</visual>
 
@@ -40,7 +40,7 @@
 		<gazebo reference="${prefix}_link">
 			<sensor type="gpu_ray" name="head_hokuyo_sensor">
 				<pose>0 0 0 0 0 0</pose>
-				<visualize>false</visualize>
+				<visualize>true</visualize>
 				<update_rate>${update_rate}</update_rate>
 				<ray>
 					<scan>

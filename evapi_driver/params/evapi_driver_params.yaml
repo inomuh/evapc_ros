@@ -1,5 +1,0 @@
-  server: evarobotDSK
-  portNo: 9090
-  topicBumper: bumper
-  frequency: 10.0
-  alwaysOn: true
