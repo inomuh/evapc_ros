@@ -1,0 +1,8 @@
+base_global_planner: navfn/NavfnROS
+base_local_planner: base_local_planner/TrajectoryPlannerROS
+planner_frequency: 0
+controller_frequency: 10.0
+planner_patience: 5
+controller_patience: 15
+oscillation_timeout: 0.0
+oscillation_distance: 0.5

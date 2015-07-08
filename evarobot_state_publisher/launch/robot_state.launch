@@ -5,7 +5,7 @@
   <param name="robot_description" command="$(find xacro)/xacro.py $(find evarobot_description)/urdf/evarobot.urdf.xacro" />
   <param name="publish_frequency" type="double" value="10.0" /> 
  
-  <!-- <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="-0.09 0 0.4275  1.5708 0 0 base_link laser 100" /> -->
+ <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="-0.09 0 0.4275  1.5708 0 0 base_link sensor/lidar_link 100" /> 
 
  
 </launch>

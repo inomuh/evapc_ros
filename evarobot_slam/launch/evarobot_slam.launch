@@ -3,12 +3,16 @@
   <!-- Run multimaster_fkie -->
   <include file="$(find master_discovery_fkie)/launch/master_discovery.launch" />
   <include file="$(find master_sync_fkie)/launch/master_sync.launch" />
+
+  <!-- Run robot pose ekf -->
+<!--  <include file="$(find evarobot_navigation)/launch/robot_pose_ekf.launch" /> -->
+
   
   <!-- Run state publisher -->
   <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" />
   
   
-  <include file="$(find evarobot_slam)/launch/rplidar.launch" />
-  <include file="$(find evarobot_slam)/launch/hectormapping.launch" />
+  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+  <include file="$(find rplidar_ros)/launch/hectormapping.launch" />
 </launch>
 

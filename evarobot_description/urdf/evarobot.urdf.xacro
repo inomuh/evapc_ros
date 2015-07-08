@@ -92,7 +92,7 @@
 						 parent_link="base_link" />
 						 
   <!-- Lidar -->
-  <xacro:evarobot_lidar prefix="sensor/lidar" 
+<!--  <xacro:evarobot_lidar prefix="sensor/lidar" 
                         joint_x="-0.09" 
                         joint_y="0.0" 
                         joint_z="0.4275" 
@@ -111,6 +111,7 @@
 												robot_namespace="evarobot" 
 												topic_name="lidar" 
 												frame_name="sensor/lidar_link" /> 
+												-->
 <!--
   <xacro:evarobot_lidar prefix="sensor/lidar" 
                         joint_x="0.0" 
@@ -132,15 +133,15 @@
 												topic_name="lidar" 
 												frame_name="sensor/lidar_link" /> 
 -->												
-				
+				<!-- joint_z="0.112" -->
   <!-- Kinect -->
    <xacro:evarobot_kinect prefix="sensor/kinect"
 						 joint_x="0.0" 
 						 joint_y="0.0" 
-						 joint_z="0.112" 
-						 joint_roll="0.0" 
+						 joint_z="0.23" 
+						 joint_roll="-1.57" 
 						 joint_pitch="0.0" 
-						 joint_yaw="0.0"
+						 joint_yaw="-1.57"
 						 parent_link="base_link"
 						 base_line="0.2"
 						 update_rate="1.0"
