@@ -5,12 +5,13 @@
 		<link name="${prefix}_link">
 		
 			<collision>
-				<origin xyz="${mesh_x} ${mesh_y} ${mesh_z}" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}" /> 
+				<origin xyz="0 0 0" rpy="0 0 0"/>
+				<!--<origin xyz="${mesh_x} ${mesh_y} ${mesh_z}" rpy="${mesh_roll} ${mesh_pitch} ${mesh_yaw}" /> -->
 				
 				
 				<geometry>
-					<mesh filename="package://evarobot_description/meshes/eva50.stl" scale="0.01 0.01 0.01"/>  
-<!--				<box size="${box_x} ${box_y} ${box_z}"/> -->
+<!--					<mesh filename="package://evarobot_description/meshes/eva50.stl" scale="0.01 0.01 0.01"/>   -->
+				<box size="${box_x} ${box_y} ${box_z}"/> 
 				</geometry>
 			</collision>
 			

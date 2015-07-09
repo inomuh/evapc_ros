@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Range4
       Splitter Ratio: 0.5
     Tree Height: 775
   - Class: rviz/Selection
@@ -195,7 +196,7 @@ Visualization Manager:
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
-      Color: 255; 255; 255
+      Color: 255; 0; 0
       Enabled: true
       Name: Range
       Queue Size: 100
@@ -204,7 +205,7 @@ Visualization Manager:
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
-      Color: 255; 255; 255
+      Color: 255; 0; 0
       Enabled: true
       Name: Range
       Queue Size: 100
@@ -213,7 +214,7 @@ Visualization Manager:
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
-      Color: 255; 255; 255
+      Color: 255; 0; 0
       Enabled: true
       Name: Range
       Queue Size: 100
@@ -222,7 +223,7 @@ Visualization Manager:
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
-      Color: 255; 255; 255
+      Color: 255; 0; 0
       Enabled: true
       Name: Range
       Queue Size: 100
@@ -326,22 +327,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 9.11699
+      Distance: 9.33464
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.0237
-        Y: 0.887334
-        Z: -1.35131
+        X: 1.85496
+        Y: 2.1826
+        Z: -1.57143
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.364797
+      Pitch: 1.2848
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.26541
+      Yaw: 6.0886
     Saved: ~
 Window Geometry:
   Displays:
@@ -359,5 +360,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1855
-  X: 65
-  Y: 24
+  X: 55
+  Y: -14

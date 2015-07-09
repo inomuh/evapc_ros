@@ -22,8 +22,8 @@
 
 			<inertial>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
-				<mass value="5"/>
-				<inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+				<mass value="0.5"/>
+				<inertia ixx="1e-1" ixy="0" ixz="0" iyy="1e-1" iyz="0" izz="1e-1" />
 			</inertial>
 		</link>
 
@@ -37,8 +37,8 @@
 			<child link="${prefix}_link"/>
 			<origin rpy="${roll} ${pitch} ${yaw}" xyz="${x} ${y} ${z}"/>
 			<axis xyz="${axis_x} ${axis_y} ${axis_z}"/>
-			<limit effort="100" velocity="100"/>
-			<joint_properties damping="0.0" friction="0.0"/>
+			<limit effort="10" velocity="10"/>
+			<joint_properties damping="0.0" friction="0.3"/>
 		</joint>
 
 	</xacro:macro>  

@@ -10,7 +10,7 @@
 			"> 
 		
 		<!-- Kinect Link -->
-		<link name="kinect_dummy">
+		<link name="${prefix}_link">
 		
 			<collision>
 				<origin xyz="0 0 0" rpy="0 0 0"/>
@@ -36,21 +36,21 @@
 		<!-- Kinect Joint -->
 		<joint name="${prefix}_joint" type="fixed">
 			<axis xyz="0 1 0" />
-			<origin xyz="${joint_x} ${joint_y} ${joint_z}" rpy="0 0 0"/>
+			<origin xyz="${joint_x} ${joint_y} ${joint_z}" rpy="${joint_roll} ${joint_pitch} ${joint_yaw}"/>
 			<parent link="${parent_link}"/>
-			<child link="kinect_dummy"/>
+			<child link="${prefix}_link"/>
 		</joint>
 
 		<!-- Kinect Dummy Link -->
-		<link name="${prefix}_link">
+		<link name="kinect_dummy">
 			<pose>0 0 0 0 0 0</pose>
 		</link>
 
 		<!-- Kinect Dummy Joint -->
 		<joint name="kinect_joint_dummy" type="fixed">
-			<origin xyz="0 0 0" rpy="${joint_roll} ${joint_pitch} ${joint_yaw}"/>
-			<parent link="kinect_dummy"/>
-			<child link="${prefix}_link"/>
+			<origin xyz="0 0 0" rpy="-1.57 0.0 -1.57"/>
+			<parent link="${prefix}_link"/>
+			<child link="kinect_dummy"/>
 			<axis xyz="0 1 0"/>
 		</joint> 
 		<!-- Kinect Gazebo Plugin -->
