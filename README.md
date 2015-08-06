@@ -1,5 +1,5 @@
-# evarobotH_ros_packages
-** Installing evarobotH_ros_packages **<br \>
+# evapc ros
+** Installing evapc_ros **<br \>
 
 $ sudo apt-get install ros-indigo-navigation <br \>
 $ cd ~/catkin_ws/src <br \>
