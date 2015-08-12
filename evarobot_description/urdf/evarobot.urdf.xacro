@@ -202,22 +202,23 @@
 	-->			   
   <!-- Sonar -->
   
-  <xacro:evarobot_sonar prefix="sensor/sonar0"
-						parent_link="base_link"
-						scan_samples="320" 
-						scan_resolution="1" 
-						min_angle="-0.479965544" 
-						max_angle="0.479965544"
-						range_resolution="0.01" 
-						min_range="0.02" 
-						max_range="5.0"
-						topic_name="sonar0" 
-						frame_name="sensor/sonar0_link"
-						update_rate="4">
-						  <origin xyz="0.045 -0.168 0.03" rpy="0 0 ${-pi/2}" />
-
-  </xacro:evarobot_sonar>
-					
+  
+	<xacro:evarobot_sonar prefix="sensor/sonar0"
+				parent_link="base_link"
+				scan_samples="320" 
+				scan_resolution="1" 
+				min_angle="-0.479965544" 
+				max_angle="0.479965544"
+				range_resolution="0.01" 
+				min_range="0.02" 
+				max_range="5.0"
+				topic_name="sonar0" 
+				frame_name="sensor/sonar0_link"
+				update_rate="4" >
+				<origin xyz="0.130 -0.147 0.03" rpy="0 0 ${-pi/3}" />
+				
+	</xacro:evarobot_sonar>
+			
   <xacro:evarobot_sonar prefix="sensor/sonar1"
 						parent_link="base_link"
 						scan_samples="320" 
@@ -231,11 +232,72 @@
 						frame_name="sensor/sonar1_link"
 						update_rate="4">
 								<origin xyz="0.213 0.0 0.03" rpy="0 0 0" />
+	</xacro:evarobot_sonar>
+	
 
+	<xacro:evarobot_sonar prefix="sensor/sonar2"
+				parent_link="base_link"
+				scan_samples="320" 
+				scan_resolution="1" 
+				min_angle="-0.479965544" 
+				max_angle="0.479965544"
+				range_resolution="0.01" 
+				min_range="0.02" 
+				max_range="5.0"
+				topic_name="sonar2" 
+				frame_name="sensor/sonar2_link"
+				update_rate="4" >
+				<origin xyz="0.130 0.147 0.03" rpy="0 0 ${pi/3}" />						
+	</xacro:evarobot_sonar>
+
+	<xacro:evarobot_sonar prefix="sensor/sonar3"
+					parent_link="base_link"
+					scan_samples="320" 
+					scan_resolution="1" 
+					min_angle="-0.479965544" 
+					max_angle="0.479965544"
+					range_resolution="0.01" 
+					min_range="0.02" 
+					max_range="5.0"
+					topic_name="sonar3" 
+					frame_name="sensor/sonar3_link"
+					update_rate="4">
+						<origin xyz="-0.045 0.168 0.03" rpy="0 0 ${pi/2}" />
+						
+	</xacro:evarobot_sonar>	
+			
+	<xacro:evarobot_sonar prefix="sensor/sonar4"
+					parent_link="base_link"
+					scan_samples="320" 
+					scan_resolution="1" 
+					min_angle="-0.479965544" 
+					max_angle="0.479965544"
+					range_resolution="0.01" 
+					min_range="0.02" 
+					max_range="5.0"
+					topic_name="sonar4" 
+					frame_name="sensor/sonar4_link"
+					update_rate="4" >
+					<origin xyz="-0.191 0.084 0.03" rpy="0 0 ${5*pi/6}" />
 
 	</xacro:evarobot_sonar>
-						
-  <xacro:evarobot_sonar prefix="sensor/sonar2"
+
+	<xacro:evarobot_sonar prefix="sensor/sonar5"
+					parent_link="base_link"
+					scan_samples="320" 
+					scan_resolution="1" 
+					min_angle="-0.479965544" 
+					max_angle="0.479965544"
+					range_resolution="0.01" 
+					min_range="0.02" 
+					max_range="5.0"
+					topic_name="sonar5" 
+					frame_name="sensor/sonar5_link"
+					update_rate="4" >
+					<origin xyz="-0.191 -0.084 0.03" rpy="0 0 ${-5*pi/6}" />
+	</xacro:evarobot_sonar>
+  
+  <xacro:evarobot_sonar prefix="sensor/sonar6"
 						parent_link="base_link"
 						scan_samples="320" 
 						scan_resolution="1" 
@@ -244,48 +306,12 @@
 						range_resolution="0.01" 
 						min_range="0.02" 
 						max_range="5.0"
-						topic_name="sonar2" 
-						frame_name="sensor/sonar2_link"
+						topic_name="sonar6" 
+						frame_name="sensor/sonar6_link"
 						update_rate="4">
-						  <origin xyz="0.045 0.168 0.03" rpy="0 0 ${pi/2}" />
-
-
-	</xacro:evarobot_sonar>
-  <xacro:evarobot_sonar prefix="sensor/sonar3"
-						parent_link="base_link"
-						scan_samples="320" 
-						scan_resolution="1" 
-						min_angle="-0.479965544" 
-						max_angle="0.479965544"
-						range_resolution="0.01" 
-						min_range="0.02" 
-						max_range="5.0"
-						topic_name="sonar3" 
-						frame_name="sensor/sonar3_link"
-						update_rate="4" >
-						  <origin xyz="-0.191 0.084 0.03" rpy="0 0 ${5*pi/6}" />
-
-
-	</xacro:evarobot_sonar>
-	
-	  <xacro:evarobot_sonar prefix="sensor/sonar4"
-						parent_link="base_link"
-						scan_samples="320" 
-						scan_resolution="1" 
-						min_angle="-0.479965544" 
-						max_angle="0.479965544"
-						range_resolution="0.01" 
-						min_range="0.02" 
-						max_range="5.0"
-						topic_name="sonar4" 
-						frame_name="sensor/sonar4_link"
-						update_rate="4" >
-  <origin xyz="-0.191 -0.084 0.03" rpy="0 0 ${-5*pi/6}" />
-
-	</xacro:evarobot_sonar>
-	
-	
-						
+						  <origin xyz="-0.045 -0.168 0.03" rpy="0 0 ${-pi/2}" />
+  </xacro:evarobot_sonar>
+  
   <!-- Infrared -->	
   
   <xacro:evarobot_infrared prefix="sensor/ir0"
@@ -300,7 +326,7 @@
 						   topic_name="ir0" 
 						   frame_name="sensor/ir0_link"
 						   update_rate="4" >
-						   	     <origin xyz="0.191 -0.084 0.03" rpy="0 0 ${-pi/6}" />
+						   	     <origin xyz="0.191 -0.084 -0.122" rpy="0 0 ${-pi/6}" />
 
 	</xacro:evarobot_infrared>
 						   
@@ -316,7 +342,7 @@
 						   topic_name="ir1" 
 						   frame_name="sensor/ir1_link"
 						   update_rate="4">
-						   		<origin xyz="0.191 0.084 0.03" rpy="0 0 ${pi/6}" />
+						   		<origin xyz="0.191 0.084 -0.122" rpy="0 0 ${pi/6}" />
 
 	</xacro:evarobot_infrared> 
 						   
@@ -332,7 +358,7 @@
 						   topic_name="ir2" 
 						   frame_name="sensor/ir2_link"
 						   update_rate="4">
-						   		<origin xyz="-0.045 0.168 0.03" rpy="0 0 ${pi/2}" />
+						   		<origin xyz="-0.130 0.147 -0.122" rpy="0 0 ${2*pi/3}" />
 
 	</xacro:evarobot_infrared> 
 
@@ -348,7 +374,7 @@
 						   topic_name="ir3" 
 						   frame_name="sensor/ir3_link"
 						   update_rate="4">
-						   	    <origin xyz="-0.045 -0.168 0.03" rpy="0 0 ${-pi/2}" />
+						   	    <origin xyz="-0.130 -0.147 -0.122" rpy="0 0 ${-2*pi/3}" />
 
 	</xacro:evarobot_infrared> 	 
 					   
