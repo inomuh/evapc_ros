@@ -116,7 +116,7 @@
                         joint_z="0.4415" 
                         joint_roll="0.0" 
                         joint_pitch="0.0" 
-                        joint_yaw="-1.5708" 
+                        joint_yaw="3.14" 
 												update_rate="40" 
 												samples="720" 
 												resolution="1" 
@@ -130,7 +130,7 @@
 												topic_name="lidar" 
 												frame_name="lidar_link" /> 
 
-
+<!-- joint_yaw="-1.5708" -->
   <!-- Kinect -->
    <xacro:evarobot_kinect prefix="sensor/kinect"
 						 joint_x="0.17" 
@@ -200,7 +200,7 @@
 					   service_name="imu_service" 
 					   robot_namespace="evarobot" />
 	-->			   
-  <!-- Sonar -->
+ <!-- Sonar -->
   
   
 	<xacro:evarobot_sonar prefix="sensor/sonar0"
@@ -377,6 +377,5 @@
 						   	    <origin xyz="-0.130 -0.147 -0.122" rpy="0 0 ${-2*pi/3}" />
 
 	</xacro:evarobot_infrared> 	 
-					   
 			
 </robot>

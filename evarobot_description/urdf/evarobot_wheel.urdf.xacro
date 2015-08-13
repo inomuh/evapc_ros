@@ -16,7 +16,7 @@
 				<origin rpy="1.57075 0 0" xyz="0 0 0"/>
 				<geometry>
 					<cylinder length="${cylinder_length}" radius="${cylinder_radius}"/>  
-					<mesh filename="package://evarobot_description/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+					<mesh filename="model://evarobot/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
 				</geometry>
 				<material name="black"/> 		
 			</visual>
