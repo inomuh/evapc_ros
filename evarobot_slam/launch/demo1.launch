@@ -12,7 +12,7 @@
   <include file="$(find rplidar_ros)/launch/rplidar.launch" />
   
   <!-- Run Kinect -->
-  <include file="$(find freenect_launch)/launch/freenect.launch" />
+<!--  <include file="$(find openni_launch)/launch/openni.launch" /> -->
   
   <!-- Rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_slam)/rviz/demo1.rviz" />
