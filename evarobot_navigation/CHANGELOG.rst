@@ -1,0 +1,14 @@
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package evarobot_navigation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Forthcoming
+-----------
+* modified odom frame parameter
+* ...
+* modified robot state
+* ...
+* modified move_base params
+* evarobot_description in evarobot_navigation was deleted
+* packages added
+* Contributors: Mehmet Akcakoca
