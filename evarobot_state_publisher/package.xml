@@ -2,12 +2,14 @@
 <package>
   <name>evarobot_state_publisher</name>
   <version>0.0.1</version>
-  <description>The evarobot_state_publisher package</description>
+  <description>evarobot_state_publisher provides tf information of Evarobot links.</description>
 
+  <author>Mehmet Akcakoca</author>
   <maintainer email="akcakocamehmet@gmail.com">Mehmet Akcakoca</maintainer>
   <license>BSD</license>
-  <url type="website">http://evarobot.com</url>
-  <url type="repository">https://github.com/inomuh/evapi_ros</url>
+  <url type="website">http://ros.org/wiki/evarobot_state_publisher</url>
+  <url type="repository">https://github.com/inomuh/evapc_ros</url>
+  <url type="bugtracker">https://github.com/inomuh/evapc_ros/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
