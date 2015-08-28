@@ -2,8 +2,8 @@
 Changelog for package evarobot_navigation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2015-08-28)
+------------------
 * modified odom frame parameter
 * ...
 * modified robot state

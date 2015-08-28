@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>im_msgs</name>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <description>im_msgs is custom message type for the Evarobot.</description>
  
   <author>Mehmet Akcakoca</author>
