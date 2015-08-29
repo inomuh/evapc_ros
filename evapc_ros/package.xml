@@ -18,6 +18,7 @@
   <run_depend>evarobot_pose_ekf</run_depend>
   <run_depend>evarobot_slam</run_depend>
   <run_depend>evarobot_state_publisher</run_depend>
+  <run_depend>impc_msgs</run_depend>
   
   <export>
     <metapackage/>

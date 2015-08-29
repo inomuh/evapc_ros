@@ -29,8 +29,8 @@
 #include "gazebo/sensors/RaySensor.hh"
 #include "gazebo/sensors/SensorManager.hh"
 
-#include "im_msgs/BumperState.h"
-#include "im_msgs/Bumper.h"
+#include "impc_msgs/BumperState.h"
+#include "impc_msgs/Bumper.h"
 
 #include "gazebo_msgs/ContactsState.h"
 
@@ -61,7 +61,7 @@ namespace gazebo
 
 
       this->nh = new ros::NodeHandle("~");
-      this->pubbumper = this->nh->advertise<im_msgs::Bumper>("sensor/Bumper",1000);
+      this->pubbumper = this->nh->advertise<impc_msgs::Bumper>("sensor/Bumper",1000);
 
 //***********************************************
 	  sensors::SensorPtr bumpers[3];
@@ -101,7 +101,7 @@ namespace gazebo
 
           
 			// Publish          
-            im_msgs::Bumper totalbumper;
+            impc_msgs::Bumper totalbumper;
                         
             totalbumper.header.stamp=current_time; //ros::Time::now();
             totalbumper.header.frame_id="base_scan";
@@ -115,7 +115,7 @@ namespace gazebo
             
             for(int i = 0; i < 3; i++)
             {
-				im_msgs::BumperState bumper_state;
+				impc_msgs::BumperState bumper_state;
 				
 				bumper_state.bumper_state = true;
 				
