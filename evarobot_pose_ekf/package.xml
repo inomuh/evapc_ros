@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>evarobot_pose_ekf</name>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <description>evarobot_pose_ekf provides roslaunch scripts for correction of the Evarobot's orientation with an IMU sensor.</description>
   
   <author>Mehmet Akcakoca</author>

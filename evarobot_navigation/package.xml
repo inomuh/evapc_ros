@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>evarobot_navigation</name>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <description>evarobot_navigation provides roslaunch script files to navigate the Evarobot.</description>
 
   <author>Mehmet Akcakoca</author>
