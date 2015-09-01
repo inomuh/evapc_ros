@@ -27,6 +27,7 @@ find_package(catkin REQUIRED COMPONENTS
   polled_camera
   diagnostic_updater
   camera_info_manager
+  hector_gazebo_plugins
 )
 
 include (FindPkgConfig)
