@@ -1,6 +1,6 @@
 <package>
   <name>evapc_ros</name>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <description>
     The evapc_ros meta package provides all the basic packages for Gazebo model and navigation of Evarobot.
   </description>
