@@ -2,6 +2,11 @@
 Changelog for package evarobot_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add hector_gazebo_plugins to dependencies of evarobot_description
+* Contributors: Mehmet Akcakoca
+
 0.0.2 (2015-08-28)
 ------------------
 * modified sensors in gazebo model
