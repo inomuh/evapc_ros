@@ -19,3 +19,15 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
+
+install(DIRECTORY gazebo_map
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  )
+  
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  )
+  
+install(DIRECTORY rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  )

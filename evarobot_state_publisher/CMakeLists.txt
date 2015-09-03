@@ -30,4 +30,14 @@ add_executable(odom_to_base src/odom_to_base.cpp)
    ${catkin_LIBRARIES}
  )
 
-
+install(DIRECTORY launch
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  )
+  
+install(DIRECTORY rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  )
+  
+install(DIRECTORY urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  )

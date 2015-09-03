@@ -2,6 +2,9 @@
 Changelog for package evarobot_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.4 (2015-09-03)
 ------------------
 * Add hector_gazebo_plugins to dependencies of evarobot_description
