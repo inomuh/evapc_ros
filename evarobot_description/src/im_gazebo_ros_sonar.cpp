@@ -84,8 +84,7 @@ void GazeboRosSonar::Load(sensors::SensorPtr _sensor, sdf::ElementPtr _sdf)
     topic_ = _sdf->GetElement("topicName")->GetValue()->GetAsString();
 
   if (_sdf->HasElement("fov"))
-     //_sdf->GetElement("fov")->Get<double>(&d_field_of_view)
-     d_field_of_view = _sdf->GetElement("fov")->GetValueDouble();
+     d_field_of_view = _sdf->GetElement("fov")->Get<double>();
   sensor_model_.Load(_sdf);
 
   range_.header.frame_id = frame_id_;
