@@ -2,6 +2,11 @@
 Changelog for package evarobot_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix warning GetValueDouble -> Get<double>
+* Contributors: Mehmet Akcakoca
+
 0.0.5 (2015-09-03)
 ------------------
 

@@ -2,6 +2,9 @@
 Changelog for package evarobot_navigation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.5 (2015-09-03)
 ------------------
 
