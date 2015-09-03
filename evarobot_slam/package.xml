@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>evarobot_slam</name>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <description>evarobot_slam provides roslaunch scripts for SLAM map building with the Evarobot.</description>
 
   <author>Mehmet Akcakoca</author>

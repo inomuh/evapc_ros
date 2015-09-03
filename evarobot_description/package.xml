@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>evarobot_description</name>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
   <description>evarobot_description provides a complete 3D model of the Evarobot for simulation and visualization.</description>
 
   <author>Mehmet Akcakoca</author>
