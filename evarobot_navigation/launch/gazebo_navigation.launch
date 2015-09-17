@@ -1,26 +1,24 @@
+<?xml version="1.0"?>
+
 <launch>
-  <master auto="start"/>
 
   <!-- Run Gazebo -->
-  <include file="$(find evarobot_description)/launch/evarobot.launch" />
+  <arg name="world_path" default="worlds/empty.world"/>
+  <include file="$(find evarobot_description)/launch/evarobot.launch">
+	<arg name="world_path" value="$(arg world_path)"/>
+  </include>
 
   <!-- Run the map server -->
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find evarobot_slam)/gazebo_map/map.yaml"/>
+  <arg name="map_file" default="$(find evarobot_slam)/gazebo_map/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
-  <!-- Run AMCL -->
+  <!--- Run AMCL -->
   <include file="$(find evarobot_navigation)/launch/amcl_diff.launch" />
-   
-  <!-- Run move_base --> 
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-	<rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find evarobot_navigation)/params/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find evarobot_navigation)/params/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find evarobot_navigation)/params/move_base_params.yaml" command="load" />
-    <rosparam file="$(find evarobot_navigation)/params/base_local_planner_params.yaml" command="load" />
-  </node>
+
+  <!--- Run Move Base -->
+  <include file="$(find evarobot_navigation)/launch/move_base.launch" />
   
   <!-- Run rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_navigation)/rviz/gazebo.rviz" />
-  
+
 </launch>

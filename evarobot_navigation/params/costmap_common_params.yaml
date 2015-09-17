@@ -1,13 +1,23 @@
-obstacle_range: 0.50
-raytrace_range: 5.0
 footprint: [[0.20, 0.20], [-0.20, 0.20], [-0.20, -0.20], [0.20, -0.20]]
-robot_radius: 0.25
-inflation_radius: 0.55
+footprint_padding: 0.01
 
-observation_sources: laser_scan_sensor 
+robot_base_frame: base_link
+update_frequency: 4.0
+publish_frequency: 3.0
+transform_tolerance: 0.5
 
-#point_cloud_sensor
+resolution: 0.05
 
-laser_scan_sensor: {sensor_frame: sensor/lidar_link, data_type: LaserScan, topic: /sensor/lidar, marking: false, clearing: false}
+obstacle_range: 5.5
+raytrace_range: 6.0
 
-#point_cloud_sensor: {sensor_frame: frame_name, data_type: PointCloud, topic: topic_name, marking: true, clearing: true}
+static:
+    map_topic: /map
+    subscribe_to_updates: true
+
+obstacles_laser:
+    observation_sources: laser
+    laser: {sensor_frame: sensor/lidar_link, data_type: LaserScan, clearing: true, marking: true, topic: sensor/lidar, inf_is_valid: true}
+
+inflation:
+    inflation_radius: 1.0
