@@ -12,6 +12,7 @@ $ cd ~/catkin_ws <br \>
 $ catkin_make <br \>
 $ cd ~/catkin_ws/src <br \>
 $ git clone https://github.com/inomuh/evapc_ros.git -b eva50 <br \>
+$ cd ~/catkin_ws <br \> 
 $ catkin_make <br \>
 
 ** To run move_base ** <br \>
