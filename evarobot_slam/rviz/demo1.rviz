@@ -6,11 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /LaserScan1
-        - /PointCloud21
         - /TF1/Frames1
       Splitter Ratio: 0.5
-    Tree Height: 775
+    Tree Height: 595
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -29,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -76,25 +74,25 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.1
       Style: Flat Squares
-      Topic: /scan
+      Topic: /lidar
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
     - Angle Tolerance: 0.1
       Class: rviz/Odometry
       Color: 255; 25; 0
-      Enabled: true
+      Enabled: false
       Keep: 1
       Length: 1
       Name: Odometry
       Position Tolerance: 0.1
       Topic: /odom
-      Value: true
+      Value: false
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 1.06401
-        Min Value: -0.143349
+        Max Value: 0.798045
+        Min Value: -0.252346
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -168,11 +166,46 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ir0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ir1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ir2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ir3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         kinect_dummy:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        kinect_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         left_wheel_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lidar_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -187,67 +220,37 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        sensor/ir0_link:
+        sonar0_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        sensor/ir1_link:
+        sonar1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        sensor/ir2_link:
+        sonar2_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        sensor/ir3_link:
+        sonar3_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        sensor/kinect_link:
+        sonar4_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        sensor/lidar_link:
+        sonar5_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        sensor/sonar0_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sensor/sonar1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sensor/sonar2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sensor/sonar3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sensor/sonar4_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sensor/sonar5_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        sensor/sonar6_link:
+        sonar6_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -261,106 +264,7 @@ Visualization Manager:
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/ir0
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/ir1
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/ir2
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/ir3
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/sonar0
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/sonar1
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/sonar2
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/ir3
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/sonar4
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/sonar5
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /sensor/sonar6
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
+      Color: 255; 0; 0
       Enabled: true
       Name: Range
       Queue Size: 100
@@ -369,7 +273,7 @@ Visualization Manager:
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
-      Color: 255; 255; 255
+      Color: 255; 0; 0
       Enabled: true
       Name: Range
       Queue Size: 100
@@ -378,20 +282,20 @@ Visualization Manager:
     - Alpha: 0.5
       Buffer Length: 1
       Class: rviz/Range
-      Color: 255; 255; 255
-      Enabled: true
-      Name: Range
-      Queue Size: 100
-      Topic: /ir3
-      Value: true
-    - Alpha: 0.5
-      Buffer Length: 1
-      Class: rviz/Range
-      Color: 255; 255; 255
+      Color: 255; 0; 0
       Enabled: true
       Name: Range
       Queue Size: 100
       Topic: /ir2
+      Value: true
+    - Alpha: 0.5
+      Buffer Length: 1
+      Class: rviz/Range
+      Color: 255; 0; 0
+      Enabled: true
+      Name: Range
+      Queue Size: 100
+      Topic: /ir3
       Value: true
     - Alpha: 0.5
       Buffer Length: 1
@@ -459,7 +363,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: odom
+    Fixed Frame: odom_combined
     Frame Rate: 30
   Name: root
   Tools:
@@ -480,30 +384,30 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 8.30911
+      Distance: 4.17709
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.133075
-        Y: 0.400233
-        Z: -0.0428636
+        X: 0.386187
+        Y: 0.0765459
+        Z: -0.789177
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 1.1998
+      Pitch: 0.814797
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.874029
+      Yaw: 3.07218
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1056
+  Height: 876
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd00000004000000000000028200000396fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000002800000396000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002e2fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002e2000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073f0000003efc0100000002fb0000000800540069006d006501000000000000073f000002f600fffffffb0000000800540069006d00650100000000000004500000000000000000000004b70000039600000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000040000000000000191000002e2fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000002e2000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002e2fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000002e2000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000006010000003efc0100000002fb0000000800540069006d0065010000000000000601000002f600fffffffb0000000800540069006d006501000000000000045000000000000000000000046a000002e200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -512,6 +416,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1855
-  X: 65
-  Y: 24
+  Width: 1537
+  X: 53
+  Y: -14
