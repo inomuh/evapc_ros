@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(impc_msgs)
+project(im_msgs)
 
 
 find_package(catkin REQUIRED COMPONENTS
@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   trajectory_msgs
   visualization_msgs
+  message_generation
 )
 
 
@@ -20,7 +21,14 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    BumperState.msg
    Bumper.msg
+   Voltage.msg
+   Battery.msg
  )
+ 
+add_service_files(
+  FILES
+  SetRGB.srv
+)
 
 
  generate_messages(
