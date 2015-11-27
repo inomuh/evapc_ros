@@ -6,16 +6,18 @@
 
   
   <!-- Run state publisher -->
-  <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" />
+  <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" /> 
   
   <!-- Run rplidar -->
-  <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+<!--  <include file="$(find rplidar_ros)/launch/rplidar.launch" /> -->
   
   <!-- Run Kinect -->
-<!--  <include file="$(find openni_launch)/launch/openni.launch" /> -->
-  
+<!--  <include file="$(find openni_launch)/launch/openni.launch">
+	<arg name="depth_frame_id" value="kinect_dummy" />
+  </include>
+-->  
   <!-- Rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_slam)/rviz/demo1.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_slam)/rviz/demo1.rviz" /> 
   
 </launch>
 
