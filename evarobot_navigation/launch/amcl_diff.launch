@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="scan" default="sensor/lidar" />
+  <arg name="scan" default="lidar" />
 
   <node pkg="amcl" type="amcl" name="amcl">
 	<remap from="scan" to="$(arg scan)"/>  

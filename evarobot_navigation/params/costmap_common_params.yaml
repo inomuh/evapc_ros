@@ -17,7 +17,7 @@ static:
 
 obstacles_laser:
     observation_sources: laser
-    laser: {sensor_frame: sensor/lidar_link, data_type: LaserScan, clearing: true, marking: true, topic: sensor/lidar, inf_is_valid: true}
+    laser: {sensor_frame: lidar_link, data_type: LaserScan, clearing: true, marking: true, topic: lidar, inf_is_valid: true}
 
 inflation:
     inflation_radius: 1.0
