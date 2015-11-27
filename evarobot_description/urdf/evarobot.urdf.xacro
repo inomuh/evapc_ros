@@ -110,7 +110,7 @@
 						 axis_z="0.577350269" 
 						 parent_link="base_link" />						 
   <!-- Lidar -->
-  <xacro:evarobot_lidar prefix="sensor/lidar" 
+  <xacro:evarobot_lidar prefix="lidar" 
                         joint_x="-0.15" 
                         joint_y="0.0" 
                         joint_z="0.4415" 
@@ -132,7 +132,7 @@
 
 <!-- joint_yaw="-1.5708" -->
   <!-- Kinect -->
-   <xacro:evarobot_kinect prefix="sensor/kinect"
+   <xacro:evarobot_kinect prefix="kinect"
 						 joint_x="0.17" 
 						 joint_y="0.0" 
 						 joint_z="0.16" 
@@ -185,25 +185,25 @@
 						 </xacro:evarobot_bumper>
 
 
-  <!-- AHRS/IMU 
-  <xacro:evarobot_ahrs prefix="sensor/imu"
+  <!-- AHRS/IMU -->
+  <xacro:evarobot_ahrs prefix="imu"
 					   joint_x="0.0" 
 					   joint_y="0.0" 
 					   joint_z="0.19" 
-					   joint_roll="0.0" 
+					   joint_roll="${pi}" 
 					   joint_pitch="0.0" 
 					   joint_yaw="0.0" 
 					   parent_link="base_link" 
 					   topic_name="imu" 
-					   frame_name="sensor/imu_link" 
+					   frame_name="imu_link" 
 					   update_rate="10.0" 
 					   service_name="imu_service" 
 					   robot_namespace="evarobot" />
-	-->			   
+			   
  <!-- Sonar -->
   
   
-	<xacro:evarobot_sonar prefix="sensor/sonar0"
+	<xacro:evarobot_sonar prefix="sonar0"
 				parent_link="base_link"
 				scan_samples="320" 
 				scan_resolution="1" 
@@ -213,13 +213,13 @@
 				min_range="0.02" 
 				max_range="5.0"
 				topic_name="sonar0" 
-				frame_name="sensor/sonar0_link"
+				frame_name="sonar0_link"
 				update_rate="4" >
 				<origin xyz="0.130 -0.147 0.03" rpy="0 0 ${-pi/3}" />
 				
 	</xacro:evarobot_sonar>
 			
-  <xacro:evarobot_sonar prefix="sensor/sonar1"
+  <xacro:evarobot_sonar prefix="sonar1"
 						parent_link="base_link"
 						scan_samples="320" 
 						scan_resolution="1" 
@@ -229,13 +229,13 @@
 						min_range="0.02" 
 						max_range="5.0"
 						topic_name="sonar1" 
-						frame_name="sensor/sonar1_link"
+						frame_name="sonar1_link"
 						update_rate="4">
 								<origin xyz="0.213 0.0 0.03" rpy="0 0 0" />
 	</xacro:evarobot_sonar>
 	
 
-	<xacro:evarobot_sonar prefix="sensor/sonar2"
+	<xacro:evarobot_sonar prefix="sonar2"
 				parent_link="base_link"
 				scan_samples="320" 
 				scan_resolution="1" 
@@ -245,12 +245,12 @@
 				min_range="0.02" 
 				max_range="5.0"
 				topic_name="sonar2" 
-				frame_name="sensor/sonar2_link"
+				frame_name="sonar2_link"
 				update_rate="4" >
 				<origin xyz="0.130 0.147 0.03" rpy="0 0 ${pi/3}" />						
 	</xacro:evarobot_sonar>
 
-	<xacro:evarobot_sonar prefix="sensor/sonar3"
+	<xacro:evarobot_sonar prefix="sonar3"
 					parent_link="base_link"
 					scan_samples="320" 
 					scan_resolution="1" 
@@ -260,13 +260,13 @@
 					min_range="0.02" 
 					max_range="5.0"
 					topic_name="sonar3" 
-					frame_name="sensor/sonar3_link"
+					frame_name="sonar3_link"
 					update_rate="4">
 						<origin xyz="-0.045 0.168 0.03" rpy="0 0 ${pi/2}" />
 						
 	</xacro:evarobot_sonar>	
 			
-	<xacro:evarobot_sonar prefix="sensor/sonar4"
+	<xacro:evarobot_sonar prefix="sonar4"
 					parent_link="base_link"
 					scan_samples="320" 
 					scan_resolution="1" 
@@ -276,13 +276,13 @@
 					min_range="0.02" 
 					max_range="5.0"
 					topic_name="sonar4" 
-					frame_name="sensor/sonar4_link"
+					frame_name="sonar4_link"
 					update_rate="4" >
 					<origin xyz="-0.191 0.084 0.03" rpy="0 0 ${5*pi/6}" />
 
 	</xacro:evarobot_sonar>
 
-	<xacro:evarobot_sonar prefix="sensor/sonar5"
+	<xacro:evarobot_sonar prefix="sonar5"
 					parent_link="base_link"
 					scan_samples="320" 
 					scan_resolution="1" 
@@ -292,12 +292,12 @@
 					min_range="0.02" 
 					max_range="5.0"
 					topic_name="sonar5" 
-					frame_name="sensor/sonar5_link"
+					frame_name="sonar5_link"
 					update_rate="4" >
 					<origin xyz="-0.191 -0.084 0.03" rpy="0 0 ${-5*pi/6}" />
 	</xacro:evarobot_sonar>
   
-  <xacro:evarobot_sonar prefix="sensor/sonar6"
+  <xacro:evarobot_sonar prefix="sonar6"
 						parent_link="base_link"
 						scan_samples="320" 
 						scan_resolution="1" 
@@ -307,14 +307,14 @@
 						min_range="0.02" 
 						max_range="5.0"
 						topic_name="sonar6" 
-						frame_name="sensor/sonar6_link"
+						frame_name="sonar6_link"
 						update_rate="4">
 						  <origin xyz="-0.045 -0.168 0.03" rpy="0 0 ${-pi/2}" />
   </xacro:evarobot_sonar>
   
   <!-- Infrared -->	
   
-  <xacro:evarobot_infrared prefix="sensor/ir0"
+  <xacro:evarobot_infrared prefix="ir0"
 						   parent_link="base_link"
 						   scan_samples="320" 
 						   scan_resolution="1" 
@@ -324,13 +324,13 @@
 						   min_range="0.10" 
 						   max_range="0.80"
 						   topic_name="ir0" 
-						   frame_name="sensor/ir0_link"
+						   frame_name="ir0_link"
 						   update_rate="4" >
 						   	     <origin xyz="0.191 -0.084 -0.122" rpy="0 0 ${-pi/6}" />
 
 	</xacro:evarobot_infrared>
 						   
-  <xacro:evarobot_infrared prefix="sensor/ir1"
+  <xacro:evarobot_infrared prefix="ir1"
 						   parent_link="base_link"
 						   scan_samples="320" 
 						   scan_resolution="1" 
@@ -340,13 +340,13 @@
 						   min_range="0.10" 
 						   max_range="0.80"
 						   topic_name="ir1" 
-						   frame_name="sensor/ir1_link"
+						   frame_name="ir1_link"
 						   update_rate="4">
 						   		<origin xyz="0.191 0.084 -0.122" rpy="0 0 ${pi/6}" />
 
 	</xacro:evarobot_infrared> 
 						   
-  <xacro:evarobot_infrared prefix="sensor/ir2"
+  <xacro:evarobot_infrared prefix="ir2"
 						   parent_link="base_link"
 						   scan_samples="320" 
 						   scan_resolution="1" 
@@ -356,13 +356,13 @@
 						   min_range="0.10" 
 						   max_range="0.80"
 						   topic_name="ir2" 
-						   frame_name="sensor/ir2_link"
+						   frame_name="ir2_link"
 						   update_rate="4">
 						   		<origin xyz="-0.130 0.147 -0.122" rpy="0 0 ${2*pi/3}" />
 
 	</xacro:evarobot_infrared> 
 
-  <xacro:evarobot_infrared prefix="sensor/ir3"
+  <xacro:evarobot_infrared prefix="ir3"
 						   parent_link="base_link"
 						   scan_samples="320" 
 						   scan_resolution="1" 
@@ -372,7 +372,7 @@
 						   min_range="0.10" 
 						   max_range="0.80"
 						   topic_name="ir3" 
-						   frame_name="sensor/ir3_link"
+						   frame_name="ir3_link"
 						   update_rate="4">
 						   	    <origin xyz="-0.130 -0.147 -0.122" rpy="0 0 ${-2*pi/3}" />
 

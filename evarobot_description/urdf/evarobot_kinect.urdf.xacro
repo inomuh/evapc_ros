@@ -83,13 +83,13 @@
 					<alwaysOn>true</alwaysOn>
 					<updateRate>${update_rate}</updateRate>
 					<cameraName>${camera_name}</cameraName>
-					<imageTopicName>/${camera_name}/depth/image_raw</imageTopicName>
-					<depthImageCameraInfoTopicName>${camera_name}/depth/image_camera_info</depthImageCameraInfoTopicName>
+					<imageTopicName>rgb/image_raw</imageTopicName>
+					<depthImageCameraInfoTopicName>depth/image_camera_info</depthImageCameraInfoTopicName>
 					<pointCloudCutoffMax>5.0</pointCloudCutoffMax>
-					<cameraInfoTopicName>/${camera_name}/depth/camera_info</cameraInfoTopicName>
-					<depthImageTopicName>/${camera_name}/depth/image_raw</depthImageTopicName>
-					<depthImageInfoTopicName>/${camera_name}/depth/camera_info</depthImageInfoTopicName>
-					<pointCloudTopicName>/${camera_name}/depth/points</pointCloudTopicName>
+					<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+					<depthImageTopicName>depth/image_raw</depthImageTopicName>
+					<depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
+					<pointCloudTopicName>depth/points</pointCloudTopicName>
 					<frameName>kinect_dummy</frameName>
 					<pointCloudCutoff>0.5</pointCloudCutoff>
 					<distortionK1>0.00000001</distortionK1>

@@ -70,19 +70,19 @@
 				</ray>
 
     			<plugin name="${prefix}_controller" filename="libgazebo_ros_gpu_laser.so">
-					<robotNamespace>${robot_namespace}</robotNamespace>
+<!--					<robotNamespace>${robot_namespace}</robotNamespace> -->
 					<topicName>${topic_name}</topicName>
 					<frameName>${frame_name}</frameName>
 				</plugin> 
 			</sensor>
 		</gazebo>
-
+<!--
 		<gazebo>
 			<plugin name="${prefix}_control" filename="libgazebo_ros_control.so">
 				<robotNamespace>${robot_namespace}</robotNamespace>
 			</plugin>
 		</gazebo>
-		
+-->		
 
 	</xacro:macro>
 </robot>

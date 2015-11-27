@@ -35,7 +35,7 @@
 		<gazebo>
 			<plugin name="${prefix}_plugin" filename="libgazebo_ros_imu.so">
 				<alwaysOn>true</alwaysOn>
-				<robotNamespace>gazebo</robotNamespace>    
+		<!--		<robotNamespace>gazebo</robotNamespace>     -->
 				<frameName>${frame_name}</frameName>   
 				<bodyName>${prefix}_link</bodyName>
 				<topicName>${topic_name}</topicName>
