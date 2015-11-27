@@ -28,6 +28,7 @@ find_package(catkin REQUIRED COMPONENTS
   diagnostic_updater
   camera_info_manager
   hector_gazebo_plugins
+  im_msgs
 )
 
 include (FindPkgConfig)
@@ -148,6 +149,7 @@ add_dependencies(im_gazebo_ros_bumper gazebo_msgs_gencpp)
 target_link_libraries(im_gazebo_ros_bumper ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES} ContactPlugin ${catkin_LIBRARIES})
 
 add_library(evarobot_ros_bumper src/evarobot_ros_bumper.cpp)
+add_dependencies(evarobot_ros_bumper im_msgs_gencpp)
 target_link_libraries(evarobot_ros_bumper  ${catkin_LIBRARIES}  ${GAZEBO_LIBRARIES})
 
 add_library(im_gazebo_ros_sonar src/im_gazebo_ros_sonar.cpp)
