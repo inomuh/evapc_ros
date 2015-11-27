@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="robot_ns" default="/" />
+	
+	<!-- Run multimaster_fkie -->
+  <include file="$(find master_discovery_fkie)/launch/master_discovery.launch" />
+  <include file="$(find master_sync_fkie)/launch/master_sync.launch" />
+	
+	<!-- Run Lidar sensor -->
+	<group ns="$(arg robot_ns)">    
+		<include file="$(find evapc_start)/launch/lidar.launch">
+			<arg name="robot_ns" value="$(arg robot_ns)" />
+		</include>
+		
+		<!-- Run Kinect sensor -->
+		<include file="$(find openni_launch)/launch/openni.launch">
+			<!-- <arg name="depth_frame_id" value="$(arg robot_ns)/kinect_dummy" /> -->
+			<arg name="depth_frame_id" value="kinect_dummy" />
+		</include>
+	</group>
+</launch>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>evapc_start</name>
+  <version>0.0.0</version>
+  <description>
+    The evapc_start provides roslaunch scripts for starting the Evarobot base functionality in PC.
+  </description>
+  <author>Mehmet Akcakoca</author>
+  <maintainer email="akcakocamehmet@gmail.com">Mehmet Akcakoca</maintainer>
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/evapc_ros</url>
+  <url type="repository">https://github.com/inomuh/evapc_ros</url>
+  <url type="bugtracker">https://github.com/inomuh/evapc_ros/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
