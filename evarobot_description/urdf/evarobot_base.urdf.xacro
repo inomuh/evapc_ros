@@ -20,7 +20,7 @@
 				
 				<geometry>
 				<!-- <box size="${box_x} ${box_y} ${box_z}"/> -->
-					<mesh filename="package://evarobot_description/meshes/eva50.stl" scale="0.01 0.01 0.01"/>  
+				<mesh filename="package://evarobot_description/meshes/eva50.dae" scale="0.01 0.01 0.01"/>  
 				</geometry>
 				
 				<material name="red">
