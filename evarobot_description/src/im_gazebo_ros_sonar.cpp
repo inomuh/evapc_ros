@@ -31,6 +31,8 @@
 #include <gazebo/physics/physics.hh>
 #include <gazebo/sensors/RaySensor.hh>
 
+#include <tf/tf.h>
+
 #include <limits>
 
 namespace gazebo {
@@ -87,7 +89,9 @@ void GazeboRosSonar::Load(sensors::SensorPtr _sensor, sdf::ElementPtr _sdf)
      d_field_of_view = _sdf->GetElement("fov")->Get<double>();
   sensor_model_.Load(_sdf);
 
-  range_.header.frame_id = frame_id_;
+	this->frame_id_ = tf::resolve(this->namespace_, this->frame_id_);
+	
+  range_.header.frame_id = this->frame_id_;
   range_.radiation_type = sensor_msgs::Range::ULTRASOUND;
   range_.field_of_view = d_field_of_view;
 //std::min(fabs((sensor_->GetAngleMax() - sensor_->GetAngleMin()).Radian()), fabs((sensor_->GetVerticalAngleMax() - sensor_->GetVerticalAngleMin()).Radian()));
