@@ -1,0 +1,40 @@
+analyzers:
+  sensors:
+    type: diagnostic_aggregator/AnalyzerGroup
+    path: Sensors
+    analyzers:
+      sonar:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: sonar
+        timeout: 5.0
+        find_and_remove_prefix: evarobot_sonar
+      infrared:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Infrared
+        timeout: 5.0
+        find_and_remove_prefix: evarobot_infrared
+      bumper:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Bumper
+        timeout: 5.0
+        find_and_remove_prefix: evarobot_bumper
+      imu:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: IMU
+        timeout: 5.0
+        find_and_remove_prefix: evarobot_minimu9 
+      odom:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Odom
+        timeout: 5.0
+        find_and_remove_prefix: evarobot_odometry
+  controller:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: Controller
+    timeout: 5.0
+    find_and_remove_prefix: evarobot_controller 
+  motor:
+    type: diagnostic_aggregator/GenericAnalyzer
+    path: Motor
+    timeout: 5.0
+    find_and_remove_prefix: evarobot_driver

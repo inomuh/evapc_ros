@@ -1,0 +1,7 @@
+<launch>
+  <!-- Use this to debug aggregator node in GDB -->
+  <!-- launch-prefix="xterm -e gdb -args"  -->
+  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diag_agg" args="CPP" output="screen" >
+		<rosparam command="load" file="$(find evarobot_diagnostics)/launch/eva_analyzers.yaml" />
+  </node>
+</launch>
