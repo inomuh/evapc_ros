@@ -25,9 +25,7 @@ find_package(catkin REQUIRED COMPONENTS
   rosconsole
   cv_bridge
   polled_camera
-  diagnostic_updater
   camera_info_manager
-  hector_gazebo_plugins
   im_msgs
 )
 
@@ -58,6 +56,7 @@ generate_dynamic_reconfigure_options(
   cfg/GazeboRosCamera.cfg
   cfg/GazeboRosOpenniKinect.cfg
   cfg/Hokuyo.cfg
+  cfg/SensorModel.cfg
 )
 
 include_directories(include
@@ -68,6 +67,7 @@ include_directories(include
   ${OGRE-Terrain_INCLUDE_DIRS}
   ${OGRE-Paging_INCLUDE_DIRS}
   include
+  hector_gazebo_plugins
 )
 
 link_directories(
@@ -81,32 +81,9 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES 
   vision_reconfigure 
-#  gazebo_ros_utils 
-#  gazebo_ros_camera_utils 
-#  gazebo_ros_camera 
-#  gazebo_ros_multicamera 
-#  gazebo_ros_depth_camera 
-#  gazebo_ros_openni_kinect 
-#  gazebo_ros_gpu_laser 
-#  gazebo_ros_laser 
-#  gazebo_ros_block_laser 
-#  gazebo_ros_p3d 
-#  gazebo_ros_imu 
-#  gazebo_ros_f3d 
-#  gazebo_ros_ft_sensor
-  im_gazebo_ros_bumper 
-#  gazebo_ros_template 
-#  gazebo_ros_projector 
-#  gazebo_ros_prosilica 
-#  gazebo_ros_force 
-#  gazebo_ros_joint_trajectory 
-#  gazebo_ros_joint_state_publisher 
-#  gazebo_ros_joint_pose_trajectory
-#  gazebo_ros_diff_drive
-#  gazebo_ros_tricycle_drive
-#  gazebo_ros_skid_steer_drive
-#  gazebo_ros_video
-#  gazebo_ros_planar_move
+	im_gazebo_ros_sonar
+  im_gazebo_ros_bumper
+  evarobot_ros_bumper 
   
   CATKIN_DEPENDS 
   message_generation 
@@ -143,7 +120,6 @@ include_directories(
 )
 
 
-## Plugins
 add_library(im_gazebo_ros_bumper src/im_gazebo_ros_bumper.cpp)
 add_dependencies(im_gazebo_ros_bumper gazebo_msgs_gencpp)
 target_link_libraries(im_gazebo_ros_bumper ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES} ContactPlugin ${catkin_LIBRARIES})
@@ -153,44 +129,16 @@ add_dependencies(evarobot_ros_bumper im_msgs_gencpp)
 target_link_libraries(evarobot_ros_bumper  ${catkin_LIBRARIES}  ${GAZEBO_LIBRARIES})
 
 add_library(im_gazebo_ros_sonar src/im_gazebo_ros_sonar.cpp)
-target_link_libraries(im_gazebo_ros_sonar ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES})
 add_dependencies(im_gazebo_ros_sonar ${PROJECT_NAME}_gencfg)
+target_link_libraries(im_gazebo_ros_sonar ${GAZEBO_LIBRARIES} ${catkin_LIBRARIES})
+
 
 
 install(TARGETS 
-#  hokuyo_node 
-#  vision_reconfigure 
-#  camera_synchronizer
-#  gazebo_ros_utils
-#  gazebo_ros_camera_utils
-#  gazebo_ros_camera
-#  gazebo_ros_multicamera
-#  MultiCameraPlugin
-#  gazebo_ros_depth_camera
-#  gazebo_ros_openni_kinect
-#  gazebo_ros_openni_kinect
-#  gazebo_ros_laser
-#  gazebo_ros_block_laser
-#  gazebo_ros_p3d
-#  gazebo_ros_imu
-#  gazebo_ros_f3d
-#  gazebo_ros_ft_sensor
+	im_gazebo_ros_sonar
   im_gazebo_ros_bumper
-#  gazebo_ros_hand_of_god
-#  gazebo_ros_template
-#  gazebo_ros_projector
-#  gazebo_ros_prosilica
-#  gazebo_ros_force
-#  gazebo_ros_joint_trajectory
-#  gazebo_ros_joint_state_publisher
-#  gazebo_ros_joint_pose_trajectory
-#  gazebo_ros_diff_drive
-#  gazebo_ros_tricycle_drive
-#  gazebo_ros_skid_steer_drive
-#  gazebo_ros_video
-#  gazebo_ros_planar_move
-#  pub_joint_trajectory_test  
-#  gazebo_ros_gpu_laser
+  evarobot_ros_bumper
+	
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -202,36 +150,11 @@ install(DIRECTORY include/
    FILES_MATCHING PATTERN "*.h"
 )
 
-install(DIRECTORY cfg
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
+foreach(dir cfg launch map materials meshes rviz urdf worlds)
+    install(DIRECTORY ${dir}/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach()
 
-install(DIRECTORY launch
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-
-install(DIRECTORY map
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-  
-install(DIRECTORY materials
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-      
-install(DIRECTORY meshes
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-  
-install(DIRECTORY rviz
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )  
-  
-install(DIRECTORY urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-install(DIRECTORY worlds
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
 
   
 
