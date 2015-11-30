@@ -12,5 +12,5 @@
   <url type="bugtracker">https://github.com/inomuh/evapc_ros/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-
+  <run_depend>robot_pose_ekf</run_depend>
 </package>
