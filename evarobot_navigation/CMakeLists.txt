@@ -7,31 +7,14 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
 )
 
-
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES evarobot_navigation
-#  CATKIN_DEPENDS move_base roscpp
-#  DEPENDS system_lib
-)
-
+catkin_package()
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-install(DIRECTORY launch
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
+foreach(dir launch map params rviz)
+    install(DIRECTORY ${dir}/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach()
 
-install(DIRECTORY map
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-  
-install(DIRECTORY params
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
-  
-install(DIRECTORY rviz
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )  
