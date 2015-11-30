@@ -5,10 +5,6 @@
   <include file="$(find master_discovery_fkie)/launch/master_discovery.launch" />
   <include file="$(find master_sync_fkie)/launch/master_sync.launch" />
 
-  <!-- Run robot pose ekf -->
-<!--  <include file="$(find evarobot_navigation)/launch/robot_pose_ekf.launch" /> -->
-
-
   <!-- Run state publisher -->
   <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" />
 
