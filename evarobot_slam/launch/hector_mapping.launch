@@ -3,7 +3,7 @@
 <launch>
 	  
 <!--	<node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 base_link lidar_link 100" /> -->
-  <arg name="geotiff_map_file_path" default="$(find hector_geotiff)/maps"/>
+  <!-- <arg name="geotiff_map_file_path" default="$(find hector_geotiff)/maps"/> -->
   <arg name="robot_ns" default="true" />
 	<arg name="is_multi_robot" default="false"/>
 
@@ -14,8 +14,7 @@
 		<param name="scan_topic" value="lidar" />
 		
 		<param name="base_frame" value="base_link" />
-<!--		<param name="odom_frame" value="odom" /> -->
-		<param name="odom_frame" value="odom_combined" />
+		<param name="odom_frame" value="odom" />
 
 		<param name="base_frame" value="$(arg robot_ns)/base_link" if="$(arg is_multi_robot)" />
 		<param name="odom_frame" value="$(arg robot_ns)/odom" if="$(arg is_multi_robot)" />
@@ -45,7 +44,7 @@
 	
   <include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
     <arg name="trajectory_source_frame_name" value="scanmatcher_frame"/>
-    <arg name="map_file_path" value="$(arg geotiff_map_file_path)"/>
+ <!--   <arg name="map_file_path" value="$(arg geotiff_map_file_path)"/> -->
   </include>
 
 </launch>
