@@ -14,7 +14,7 @@
   <include file="$(find evarobot_pose_ekf)/launch/evarobot_pose_ekf.launch" /> 
 
   <!-- Run lidar -->
-  <include file="$(find evapc_start)/launch/lidar.launch" /> -->
+<!--  <include file="$(find evapc_start)/launch/lidar.launch" /> -->
   
   <!-- Run mapping -->
   <include file="$(find evarobot_slam)/launch/evarobotmapping.launch" />
