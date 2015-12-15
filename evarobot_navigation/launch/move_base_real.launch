@@ -1,3 +1,5 @@
+<?xml version="1.0"?>
+
 <launch>
   <master auto="start"/>
 
@@ -8,10 +10,11 @@
   <include file="$(find evarobot_navigation)/launch/amcl_diff.launch" />
   
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find evarobot_navigation)/params/move_base_params.yaml" command="load"/>
     <rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find evarobot_navigation)/params/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find evarobot_navigation)/params/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find evarobot_navigation)/params/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find evarobot_navigation)params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find evarobot_navigation)/params/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find evarobot_navigation)/params/global_costmap_params.yaml" command="load" ns="global_costmap"/>
   </node>
 </launch>
+
