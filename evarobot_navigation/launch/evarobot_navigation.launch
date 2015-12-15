@@ -1,3 +1,5 @@
+<?xml version="1.0"?>
+
 <launch>
   <master auto="start"/>
 
@@ -8,13 +10,20 @@
   <!-- Run state publisher -->
   <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" />
 
-  <!-- Run lidar sensor -->
-	<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+  <!-- Run robot pose ekf -->
+  <include file="$(find evarobot_pose_ekf)/launch/evarobot_pose_ekf.launch" />
+
+  <!-- Run lidar -->
+  <!-- Comment if using pc onboard evarobot -->
+<!--  <include file="$(find evapc_start)/launch/lidar.launch" /> -->
 
   <!-- Run move_base -->
   <include file="$(find evarobot_navigation)/launch/move_base_real.launch" />
   
   <!-- Run rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_navigation)/rviz/real_move.rviz" />
+
+  <!-- Run diagnostics -->
+  <include file="$(find evarobot_diagnostics)/launch/aggregator.launch" />
 
 </launch>
