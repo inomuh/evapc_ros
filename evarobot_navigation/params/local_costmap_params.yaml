@@ -1,4 +1,4 @@
-global_frame: odom
+global_frame: odom_combined
 rolling_window: true
 
 plugins:
