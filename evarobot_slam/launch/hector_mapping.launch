@@ -14,7 +14,7 @@
 		<param name="scan_topic" value="lidar" />
 		
 		<param name="base_frame" value="base_link" />
-		<param name="odom_frame" value="odom" />
+		<param name="odom_frame" value="odom_combined" />
 
 		<param name="base_frame" value="$(arg robot_ns)/base_link" if="$(arg is_multi_robot)" />
 		<param name="odom_frame" value="$(arg robot_ns)/odom" if="$(arg is_multi_robot)" />
