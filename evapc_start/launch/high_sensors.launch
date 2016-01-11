@@ -13,7 +13,7 @@
 		</include>
 		
 		<!-- Run Kinect sensor -->
-		<include file="$(find openni_launch)/launch/openni.launch">
+		<include file="$(find openni2_launch)/launch/openni2.launch">
 			<!-- <arg name="depth_frame_id" value="$(arg robot_ns)/kinect_dummy" /> -->
 			<arg name="depth_frame_id" value="kinect_dummy" />
 		</include>
