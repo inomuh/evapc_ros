@@ -16,7 +16,7 @@
   <include file="$(find evarobot_navigation)/launch/amcl_diff.launch" />
 
   <!--- Run Move Base -->
-  <include file="$(find evarobot_navigation)/launch/move_base.launch" />
+  <include file="$(find evarobot_navigation)/launch/move_base_sim.launch" />
   
   <!-- Run rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_navigation)/rviz/gazebo.rviz" />
