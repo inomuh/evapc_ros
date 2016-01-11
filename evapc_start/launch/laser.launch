@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- For the administrative password using sudo and sparing any lectures on why one would not want this...
+Edit the sudoers file: sudo visudo
+Find this line: %sudo ALL=(ALL) ALL
+Change the line: %sudo ALL=(ALL) NOPASSWD: ALL
+Save and Exit. 
+-->
+<launch>
+	<node name="hokuyo_node" pkg="hokuyo_node"  type="hokuyo_node" output="screen" launch-prefix="$(find evapc_start)/scripts/laser_permission"/>  
+</launch>
