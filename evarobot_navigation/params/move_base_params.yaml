@@ -1,9 +1,6 @@
 controller_frequency: 5.0
 recovery_behaviour_enabled: true
 
-base_global_planner: navfn/NavfnROS
-base_local_planner: dwa_local_planner/DWAPlannerROS
-
 NavfnROS:
   allow_unknown: true 
   default_tolerance: 0.1
@@ -13,19 +10,19 @@ TrajectoryPlannerROS:
   acc_lim_x: 2.5
   acc_lim_theta:  3.2
 
-  max_vel_x: 0.45 # 1.0
-  min_vel_x: 0.0
+  max_vel_x: 0.45
+  min_vel_x: -0.30
 
-  max_vel_theta: 0.80 # 1.0
-  min_vel_theta: -0.80 # -1.0
-  min_in_place_vel_theta: 0.2
+  max_vel_theta: 0.90
+  min_vel_theta: -0.90
+  min_in_place_vel_theta: 0.3
 
   holonomic_robot: false
-  escape_vel: 0.3 # -0.1
+  escape_vel: -0.3
 
   # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.25 # 0.1
-  xy_goal_tolerance: 0.3 # 0.2
+  yaw_goal_tolerance: 0.25
+  xy_goal_tolerance: 0.3
   latch_xy_goal_tolerance: false
 
   # Forward Simulation Parameters
@@ -51,8 +48,8 @@ TrajectoryPlannerROS:
 
   # Oscillation Prevention Parameters
   oscillation_reset_dist: 0.25 
-  escape_reset_dist: 0.1 # 0.1
-  escape_reset_theta: 0.1 # 0.1
+  escape_reset_dist: 0.1
+  escape_reset_theta: 0.1
 
 DWAPlannerROS:
   # Robot configuration parameters  
@@ -60,18 +57,17 @@ DWAPlannerROS:
   acc_lim_y: 0
   acc_lim_th: 3.2
 
-  max_vel_x: 0.45 # 0.5
-  min_vel_x: 0.0
+  max_vel_x: 0.35
+  min_vel_x: -0.20
   max_vel_y: 0
   min_vel_y: 0
 
-  max_trans_vel: 0.80 # 0.5
-  min_trans_vel: -0.80 # 0.1
-  max_rot_vel: 0.80 # 1.0
-  min_rot_vel: 0.3 # 0.2
+  max_trans_vel: 0.45
+  min_trans_vel: 0.10
+  max_rot_vel: 0.35
+  min_rot_vel: 0.20
 
   # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.25 # 0.1 
-  xy_goal_tolerance: 0.3 # 0.2
+  yaw_goal_tolerance: 0.25 
+  xy_goal_tolerance: 0.3
   latch_xy_goal_tolerance: false
-
