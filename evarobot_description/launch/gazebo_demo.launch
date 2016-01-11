@@ -1,4 +1,0 @@
-<launch>
-	<include file="$(find evarobot_description)/launch/evarobot.launch"/>
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_description)/rviz/gazebo_demo.rviz" />
-</launch>

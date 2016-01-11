@@ -4,7 +4,7 @@
 
   <!-- Run Gazebo -->
   <arg name="world_path" default="worlds/empty.world"/>
-  <include file="$(find evarobot_description)/launch/evarobot.launch">
+  <include file="$(find evarobot_gazebo)/launch/evarobot.launch">
 	<arg name="world_path" value="$(arg world_path)"/>
   </include>
 
