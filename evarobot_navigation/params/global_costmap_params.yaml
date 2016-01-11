@@ -3,5 +3,6 @@ rolling_window: false
 track_unknown_space: true
 
 plugins:
+#  - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
   - {name: static,                  type: "costmap_2d::StaticLayer"}
   - {name: inflation,               type: "costmap_2d::InflationLayer"}
