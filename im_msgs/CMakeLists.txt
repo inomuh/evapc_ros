@@ -19,6 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
    Bumper.msg
    Voltage.msg
    Battery.msg
+   WheelVel.msg
  )
  
 add_service_files(
