@@ -3,8 +3,8 @@
 	<arg name="robot_ns" default="/" />
 	
 	<!-- Run multimaster_fkie -->
-  <include file="$(find master_discovery_fkie)/launch/master_discovery.launch" />
-  <include file="$(find master_sync_fkie)/launch/master_sync.launch" />
+  <include file="$(find evapc_start)/launch/master_discovery.launch" />
+  <include file="$(find evapc_start)/launch/master_sync.launch" />
 	
 	<!-- Run Lidar sensor -->
 	<group ns="$(arg robot_ns)">    
