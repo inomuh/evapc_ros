@@ -22,5 +22,6 @@
   <run_depend>evarobot_state_publisher</run_depend>
   <run_depend>rplidar_ros</run_depend>
   <run_depend>amcl</run_depend>
-
+  <run_depend>frontier_exploration</run_depend>
+  <run_depend>gmapping</run_depend>
 </package>
