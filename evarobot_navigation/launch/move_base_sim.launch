@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="no_static_map" default="false"/>
+  <arg name="base_global_planner" default="navfn/NavfnROS"/>
+  <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
+ 
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+    <param name="base_global_planner" value="$(arg base_global_planner)"/>
+    <param name="base_local_planner" value="$(arg base_local_planner)"/>  
+		    <rosparam file="$(find evarobot_navigation)/params/move_base_params.yaml" command="load"/>
+
+		<rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find evarobot_navigation)params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <rosparam file="$(find evarobot_navigation)/params/local_costmap_params.yaml" command="load" ns="local_costmap" />
+    <param name="local_costmap/width" value="10.0"/>
+    <param name="local_costmap/height" value="10.0"/>
+
+    <rosparam file="$(find evarobot_navigation)/params/global_costmap_params.yaml" command="load" ns="global_costmap"/>
+    <param name="global_costmap/width" value="100.0" if="$(arg no_static_map)"/>
+    <param name="global_costmap/height" value="100.0" if="$(arg no_static_map)"/>
+  </node>
+
+</launch>
