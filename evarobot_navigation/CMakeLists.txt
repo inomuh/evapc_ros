@@ -3,7 +3,6 @@ project(evarobot_navigation)
 
 
 find_package(catkin REQUIRED COMPONENTS
-  move_base
   roscpp
 )
 
