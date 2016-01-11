@@ -2,7 +2,7 @@
   <name>evapc_ros</name>
   <version>0.0.5</version>
   <description>
-    The evapc_ros meta package provides all the basic packages for Gazebo model and navigation of Evarobot.
+    The evapc_ros meta package provides all the basic packages for model and navigation of Evarobot.
   </description>
   <author>Mehmet Akcakoca</author>
   <maintainer email="akcakocamehmet@gmail.com">Mehmet Akcakoca</maintainer>
@@ -20,7 +20,6 @@
   <run_depend>evarobot_state_publisher</run_depend>
   <run_depend>evapc_start</run_depend>
   <run_depend>evarobot_diagnostics</run_depend>
-  <run_depend>im_msgs</run_depend>
   
   <export>
     <metapackage/>
