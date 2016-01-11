@@ -21,6 +21,7 @@
   <run_depend>rospy</run_depend>
   <run_depend>tf</run_depend>
   <run_depend>nav_msgs</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
   <run_depend>robot_state_publisher</run_depend>
   <run_depend>evarobot_description</run_depend>
 
