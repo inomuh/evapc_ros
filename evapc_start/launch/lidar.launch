@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!-- For the administrative password using sudo and sparing any lectures on why one would not want this...
+Edit the sudoers file: sudo visudo
+Find this line: %sudo ALL=(ALL) ALL
+Change the line: %sudo ALL=(ALL) NOPASSWD: ALL
+Save and Exit. 
+-->
 <launch>
 	<arg name="robot_ns" default="/" />
 	
