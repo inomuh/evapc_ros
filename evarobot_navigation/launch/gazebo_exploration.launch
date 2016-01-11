@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!--- Run gmapping -->
+  <include file="$(find evarobot_slam)/launch/gmapping.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find evarobot_navigation)/launch/move_base_sim.launch" />
+
+  <!-- Run Frontier Exploration -->
+  <include file="$(find evarobot_navigation)/launch/exploration.launch" />
+  
+  <!-- Run rviz -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_navigation)/rviz/real_move.rviz" /> 
+
+</launch>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+
+  <!-- Run multimaster_fkie -->
+  <include file="$(find master_discovery_fkie)/launch/master_discovery.launch" />
+  <include file="$(find master_sync_fkie)/launch/master_sync.launch" />
+  
+  <!-- Run state publisher -->
+  <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" /> 
+  
+  <!-- Run robot pose ekf -->
+  <include file="$(find evarobot_pose_ekf)/launch/evarobot_pose_ekf.launch" />  
+
+  <!-- Run lidar -->
+  <include file="$(find evapc_start)/launch/lidar.launch" />
+   
+  <!--- Run gmapping -->
+  <include file="$(find evarobot_slam)/launch/gmapping.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find evarobot_navigation)/launch/move_base_real.launch" />
+
+  <!-- Run Frontier Exploration -->
+  <include file="$(find evarobot_navigation)/launch/exploration.launch" />
+  
+  <!-- Run diagnostics -->
+  <include file="$(find evarobot_diagnostics)/launch/aggregator.launch" /> 
+
+</launch>
