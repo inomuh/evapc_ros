@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Run multimaster_fkie -->
+  <include file="$(find evapc_start)/launch/master_discovery.launch" />
+  <include file="$(find evapc_start)/launch/master_sync.launch" />
+</launch>
