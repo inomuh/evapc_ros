@@ -11,6 +11,5 @@
   <include file="$(find evarobot_navigation)/launch/exploration.launch" />
   
   <!-- Run rviz -->
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_navigation)/rviz/real_move.rviz" /> 
-
+  <include file="$(find evarobot_viz)/launch/view_evarobot.launch" />
 </launch>
