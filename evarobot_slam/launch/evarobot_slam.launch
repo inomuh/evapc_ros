@@ -2,10 +2,8 @@
 
 <launch>
 
-  <!-- Run multimaster_fkie -->
-  <include file="$(find evapc_start)/launch/master_discovery.launch" />
-  <include file="$(find evapc_start)/launch/master_sync.launch" />
-
+	<!-- Run sync -->
+  <include file="$(find evapc_start)/launch/sync.launch" />
    
   <!-- Run state publisher -->
   <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" /> 
@@ -14,7 +12,7 @@
   <include file="$(find evarobot_pose_ekf)/launch/evarobot_pose_ekf.launch" /> 
 
   <!-- Run lidar -->
-<!--  <include file="$(find evapc_start)/launch/lidar.launch" /> -->
+  <include file="$(find evapc_start)/launch/lidar.launch" />
   
   <!-- Run mapping -->
   <include file="$(find evarobot_slam)/launch/evarobotmapping.launch" />
