@@ -1,8 +1,7 @@
 <launch>
 
-  <!-- Run multimaster_fkie -->
-  <include file="$(find evapc_start)/launch/master_discovery.launch" />
-  <include file="$(find evapc_start)/launch/master_sync.launch" />
+	<!-- Run sync -->
+  <include file="$(find evapc_start)/launch/sync.launch" />
 
   
   <!-- Run state publisher -->
@@ -16,8 +15,8 @@
 	<arg name="depth_frame_id" value="kinect_dummy" />
   </include>
 -->  
-  <!-- Rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_slam)/rviz/demo1.rviz" /> 
+  <!-- Run rviz -->
+  <include file="$(find evarobot_viz)/launch/view_evarobot.launch" />
   
 </launch>
 
