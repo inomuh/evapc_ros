@@ -19,6 +19,5 @@
   <include file="$(find evarobot_navigation)/launch/move_base_sim.launch" />
   
   <!-- Run rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find evarobot_navigation)/rviz/gazebo.rviz" />
-
+  <include file="$(find evarobot_viz)/launch/view_evarobot.launch" />
 </launch>
