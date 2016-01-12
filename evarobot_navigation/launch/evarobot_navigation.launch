@@ -3,9 +3,8 @@
 <launch>
   <master auto="start"/>
 
-  <!-- Run multimaster_fkie -->
-  <include file="$(find evapc_start)/launch/master_discovery.launch" />
-  <include file="$(find evapc_start)/launch/master_sync.launch" />
+	<!-- Run sync -->
+  <include file="$(find evapc_start)/launch/sync.launch" />
 
   <!-- Run state publisher -->
   <include file="$(find evarobot_state_publisher)/launch/robot_state.launch" /> 
