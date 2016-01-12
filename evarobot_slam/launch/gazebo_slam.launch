@@ -7,6 +7,4 @@
 			<arg name="robot_ns" value="$(arg robot_ns)" />
 		</include>
 	</group>
-	
-<!--	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find hector_slam_launch)/rviz_cfg/mapping_demo.rviz"/> -->
 </launch>
