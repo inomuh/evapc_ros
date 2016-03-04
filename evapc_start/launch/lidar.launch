@@ -8,7 +8,7 @@ Save and Exit.
 <launch>
 	<arg name="robot_ns" default="/" />
 	
-  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+  <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen" launch-prefix="$(find evapc_start)/scripts/lidar_permission" >
 		<param name="serial_port"         type="string" value="/dev/ttyUSB0"/>  
 		<param name="serial_baudrate"     type="int"    value="115200"/>
 		<!-- <param name="frame_id"            type="string" value="$(arg robot_ns)/lidar_link"/> -->
