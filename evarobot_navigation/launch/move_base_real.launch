@@ -6,6 +6,9 @@
   <arg name="base_global_planner" default="navfn/NavfnROS"/>
   <arg name="base_local_planner" default="dwa_local_planner/DWAPlannerROS"/>
 
+
+ <!-- launch-prefix="$(find evarobot_navigation)/scripts/global_loc" -->
+
   <!--- Run Move Base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" launch-prefix="$(find evarobot_navigation)/scripts/global_loc">
     <param name="base_global_planner" value="$(arg base_global_planner)"/>
@@ -14,8 +17,8 @@
     <rosparam file="$(find evarobot_navigation)/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
     <rosparam file="$(find evarobot_navigation)params/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find evarobot_navigation)/params/local_costmap_params.yaml" command="load" ns="local_costmap" />
-    <param name="local_costmap/width" value="10.0"/>
-    <param name="local_costmap/height" value="10.0"/> 
+    <param name="local_costmap/width" value="3.0"/>
+    <param name="local_costmap/height" value="3.0"/> 
     <rosparam file="$(find evarobot_navigation)/params/global_costmap_params.yaml" command="load" ns="global_costmap"/>
   </node>
 </launch>
