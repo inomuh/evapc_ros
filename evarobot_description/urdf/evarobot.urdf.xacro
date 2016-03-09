@@ -7,6 +7,7 @@
   <xacro:property name="pi" value="3.1415926535897931" />
   
   <!-- Includes -->
+  <xacro:include filename="$(find evarobot_description)/urdf/materials.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_base.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_caster.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_wheel.urdf.xacro"/>
@@ -19,8 +20,6 @@
   <xacro:include filename="$(find evarobot_description)/urdf/plates.urdf.xacro"/>
 
 
-
-
  <!-- Differential Drive Plugin -->
  <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
@@ -30,7 +29,6 @@
 		<publishWheelTF>true</publishWheelTF>
 		<publishWheelJointState>true</publishWheelJointState>
 		<wheelAcceleration>1</wheelAcceleration>
-	  <!--  Plugin arkadan suruslu robotlar icin yapildigindan jointler ters yazildi  -->
 	  <leftJoint>right_wheel_joint</leftJoint>
 	  <rightJoint>left_wheel_joint</rightJoint>
 	  <wheelSeparation>0.33</wheelSeparation>
@@ -52,18 +50,19 @@
   <xacro:evarobot_base prefix="base" 
 					   mesh_x="0.065" 
 					   mesh_y="-0.11" 
-					   mesh_z="-0.20" 
+					   mesh_z="-0.15" 
 					   mesh_roll="0.0" 
 					   mesh_pitch="0.0" 
 					   mesh_yaw="0" 
 					   box_x="0.40" 
 					   box_y="0.30" 
 					   box_z="0.30" />
+					   
   <!-- Left Wheel -->
   <xacro:evarobot_wheel prefix="left_wheel" 
 						joint_x="0.0" 
 						joint_y="0.16" 
-						joint_z="-0.1685" 
+						joint_z="${-0.15 + (85-54)/1000}" 
 						joint_roll="0.0" 
 						joint_pitch="0.0" 
 						joint_yaw="0.0" 
@@ -75,45 +74,47 @@
   <xacro:evarobot_wheel prefix="right_wheel" 
 						joint_x="0.0" 
 						joint_y="-0.16" 
-						joint_z="-0.1685" 
+						joint_z="${-0.15 + (85-54)/1000}" 
 						joint_roll="0.0" 
 						joint_pitch="0.0" 
 						joint_yaw="0.0" 
 						cylinder_length="0.035" 
 						cylinder_radius="0.085" 
 						parent_link="base_link" />
-  
+	
   <!-- Caster -->
+    
   <xacro:evarobot_caster prefix="front_caster" 
 						 radius="0.025" 
 						 x="0.1604" 
 						 y="0.0" 
-						 z="-0.228" 
-						 roll="-1.57075" 
+						 z="${-0.15 -13.5/2000}" 
+						 roll="0.0"
 						 pitch="0.0" 
 						 yaw="0.0" 
 						 axis_x="0.577350269" 
 						 axis_y="0.577350269" 
 						 axis_z="0.577350269" 
 						 parent_link="base_link" />
-						 
+
     <xacro:evarobot_caster prefix="rear_caster" 
 						 radius="0.025" 
 						 x="-0.1604" 
 						 y="0.0" 
-						 z="-0.228" 
-						 roll="-1.57075" 
+						 z="${-0.15 -13.5/2000}" 
+						 roll="0.0" 
 						 pitch="0.0" 
 						 yaw="0.0" 
 						 axis_x="0.577350269" 
 						 axis_y="0.577350269" 
 						 axis_z="0.577350269" 
 						 parent_link="base_link" />						 
+						 
   <!-- Lidar -->
   <xacro:evarobot_lidar prefix="lidar" 
                         joint_x="-0.15" 
                         joint_y="0.0" 
-                        joint_z="0.4415" 
+                        joint_z="${0.4415 + 100/1000}" 
                         joint_roll="0.0" 
                         joint_pitch="0.0" 
                         joint_yaw="3.14" 
@@ -129,61 +130,21 @@
 												robot_namespace="sensor" 
 												topic_name="lidar" 
 												frame_name="lidar_link" /> 
+												
+												
 
-<!-- joint_yaw="-1.5708" -->
   <!-- Kinect -->
    <xacro:evarobot_kinect prefix="kinect"
 						 joint_x="0.17" 
 						 joint_y="0.0" 
-						 joint_z="0.16" 
-						 joint_roll="0" 
+						 joint_z="${0.21 - 18.7/1000}" 
+						 joint_roll="0.0" 
 						 joint_pitch="0.0" 
-						 joint_yaw="0"
+						 joint_yaw="0.0"
 						 parent_link="base_link"
 						 base_line="0.2"
 						 update_rate="1.0"
 						 camera_name="camera" /> 
-				 
-  <!-- Bumper -->
-  
-  <xacro:evarobot_bumper prefix="bumper0"
-						 box_x="0.015" 
-						 box_y="0.015" 
-						 box_z="0.020"
-						 update_rate="10.0"
-						 parent_link="base_link"
-						 topic_name="bumper0"
-						 frame_name="bumper0_link" >
-  <origin xyz="0.191 -0.084 -0.122" rpy="0 0 ${-pi/6}" />
-						 </xacro:evarobot_bumper>
-	
-				 
-						 
-  <xacro:evarobot_bumper prefix="bumper1"
-						 box_x="0.015" 
-						 box_y="0.015" 
-						 box_z="0.020"
-						 update_rate="10.0"
-						 parent_link="base_link"
-						 topic_name="bumper1"
-						 frame_name="bumper1_link" >
-						   <origin xyz="0.213 0.0 -0.122" rpy="0 0 0" />
-  <origin xyz="0.213 0.0 -0.122" rpy="0 0 0" />
-						</xacro:evarobot_bumper>
-						 
-
-						 
-  <xacro:evarobot_bumper prefix="bumper2"
-						 box_x="0.015" 
-						 box_y="0.015" 
-						 box_z="0.020"
-						 update_rate="10.0"
-						 parent_link="base_link"
-						 topic_name="bumper2"
-						 frame_name="bumper2_link" >
-  <origin xyz="0.191 0.084 -0.122" rpy="0 0 ${pi/6}" />
-						 </xacro:evarobot_bumper>
-
 
   <!-- AHRS/IMU -->
   <xacro:evarobot_ahrs prefix="imu"
@@ -215,7 +176,7 @@
 				topic_name="sonar0" 
 				frame_name="sonar0_link"
 				update_rate="4" >
-				<origin xyz="0.130 -0.147 0.03" rpy="0 0 ${-pi/3}" />
+				<origin xyz="0.130 -0.147 ${0.03+50/1000}" rpy="0 0 ${-pi/3}" />
 				
 	</xacro:evarobot_sonar>
 			
@@ -231,7 +192,7 @@
 						topic_name="sonar1" 
 						frame_name="sonar1_link"
 						update_rate="4">
-								<origin xyz="0.213 0.0 0.03" rpy="0 0 0" />
+								<origin xyz="0.213 0.0 ${0.03+50/1000}" rpy="0 0 0" />
 	</xacro:evarobot_sonar>
 	
 
@@ -247,7 +208,7 @@
 				topic_name="sonar2" 
 				frame_name="sonar2_link"
 				update_rate="4" >
-				<origin xyz="0.130 0.147 0.03" rpy="0 0 ${pi/3}" />						
+				<origin xyz="0.130 0.147 ${0.03+50/1000}" rpy="0 0 ${pi/3}" />						
 	</xacro:evarobot_sonar>
 
 	<xacro:evarobot_sonar prefix="sonar3"
@@ -262,7 +223,7 @@
 					topic_name="sonar3" 
 					frame_name="sonar3_link"
 					update_rate="4">
-						<origin xyz="-0.045 0.168 0.03" rpy="0 0 ${pi/2}" />
+						<origin xyz="-0.045 0.168 ${0.03+50/1000}" rpy="0 0 ${pi/2}" />
 						
 	</xacro:evarobot_sonar>	
 			
@@ -278,7 +239,7 @@
 					topic_name="sonar4" 
 					frame_name="sonar4_link"
 					update_rate="4" >
-					<origin xyz="-0.191 0.084 0.03" rpy="0 0 ${5*pi/6}" />
+					<origin xyz="-0.191 0.084 ${0.03+50/1000}" rpy="0 0 ${5*pi/6}" />
 
 	</xacro:evarobot_sonar>
 
@@ -294,7 +255,7 @@
 					topic_name="sonar5" 
 					frame_name="sonar5_link"
 					update_rate="4" >
-					<origin xyz="-0.191 -0.084 0.03" rpy="0 0 ${-5*pi/6}" />
+					<origin xyz="-0.191 -0.084 ${0.03+50/1000}" rpy="0 0 ${-5*pi/6}" />
 	</xacro:evarobot_sonar>
   
   <xacro:evarobot_sonar prefix="sonar6"
@@ -309,10 +270,10 @@
 						topic_name="sonar6" 
 						frame_name="sonar6_link"
 						update_rate="4">
-						  <origin xyz="-0.045 -0.168 0.03" rpy="0 0 ${-pi/2}" />
+						  <origin xyz="-0.045 -0.168 ${0.03+50/1000}" rpy="0 0 ${-pi/2}" />
   </xacro:evarobot_sonar>
-  
-  <!-- Infrared -->	
+   
+  <!-- Infrared -->
   
   <xacro:evarobot_infrared prefix="ir0"
 						   parent_link="base_link"
@@ -326,7 +287,7 @@
 						   topic_name="ir0" 
 						   frame_name="ir0_link"
 						   update_rate="4" >
-						   	     <origin xyz="0.191 -0.084 -0.122" rpy="0 0 ${-pi/6}" />
+						   	     <origin xyz="0.191 -0.084 ${-0.122+50/1000}" rpy="0 0 ${-pi/6}" />
 
 	</xacro:evarobot_infrared>
 						   
@@ -342,7 +303,7 @@
 						   topic_name="ir1" 
 						   frame_name="ir1_link"
 						   update_rate="4">
-						   		<origin xyz="0.191 0.084 -0.122" rpy="0 0 ${pi/6}" />
+						   		<origin xyz="0.191 0.084 ${-0.122+50/1000}" rpy="0 0 ${pi/6}" />
 
 	</xacro:evarobot_infrared> 
 						   
@@ -358,7 +319,7 @@
 						   topic_name="ir2" 
 						   frame_name="ir2_link"
 						   update_rate="4">
-						   		<origin xyz="-0.130 0.147 -0.122" rpy="0 0 ${2*pi/3}" />
+						   		<origin xyz="-0.130 0.147 ${-0.122+50/1000}" rpy="0 0 ${2*pi/3}" />
 
 	</xacro:evarobot_infrared> 
 
@@ -374,8 +335,48 @@
 						   topic_name="ir3" 
 						   frame_name="ir3_link"
 						   update_rate="4">
-						   	    <origin xyz="-0.130 -0.147 -0.122" rpy="0 0 ${-2*pi/3}" />
+						   	    <origin xyz="-0.130 -0.147 ${-0.122+50/1000}" rpy="0 0 ${-2*pi/3}" />
 
-	</xacro:evarobot_infrared> 	 
+	</xacro:evarobot_infrared> 
+	
+ <!-- Bumper -->
+  
+  <xacro:evarobot_bumper prefix="bumper0"
+						 box_x="0.015" 
+						 box_y="0.015" 
+						 box_z="0.020"
+						 update_rate="10.0"
+						 parent_link="base_link"
+						 topic_name="bumper0"
+						 frame_name="bumper0_link" >
+  <origin xyz="0.191 -0.084 ${-0.122+50/1000}" rpy="0 0 ${-pi/6}" />
+						 </xacro:evarobot_bumper>
+	
+				 
+						 
+  <xacro:evarobot_bumper prefix="bumper1"
+						 box_x="0.015" 
+						 box_y="0.015" 
+						 box_z="0.020"
+						 update_rate="10.0"
+						 parent_link="base_link"
+						 topic_name="bumper1"
+						 frame_name="bumper1_link" >
+						   <origin xyz="0.213 0.0 ${-0.122+50/1000}" rpy="0 0 0" />
+						</xacro:evarobot_bumper>
+						 
+
+						 
+  <xacro:evarobot_bumper prefix="bumper2"
+						 box_x="0.015" 
+						 box_y="0.015" 
+						 box_z="0.020"
+						 update_rate="10.0"
+						 parent_link="base_link"
+						 topic_name="bumper2"
+						 frame_name="bumper2_link" >
+  <origin xyz="0.191 0.084 ${-0.122+50/1000}" rpy="0 0 ${pi/6}" />
+						 </xacro:evarobot_bumper>
+						
 			
 </robot>
