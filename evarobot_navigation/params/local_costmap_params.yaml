@@ -1,6 +1,9 @@
 global_frame: odom_combined
 rolling_window: true
 
+inflation:
+    inflation_radius: 0.20
+
 plugins:
   - {name: obstacles_laser,           type: "costmap_2d::ObstacleLayer"}
   - {name: inflation,                 type: "costmap_2d::InflationLayer"}
