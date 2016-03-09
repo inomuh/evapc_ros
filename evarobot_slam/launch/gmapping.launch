@@ -9,7 +9,7 @@
       base_frame: base_link
       map_frame: map
 
-      map_update_interval: 0.25 # Publish new map
+      map_update_interval: 0.20 # Publish new map
 
       maxUrange: 4.5 # Should be just less than sensor range
       maxRange: 5.0 # Should be just greater than sensor range
@@ -22,18 +22,18 @@
       resampleThreshold: 0.5
 
       # Initial Map Size
-      xmin: -100.0
-      ymin: -100.0
-      xmax: 100.0
-      ymax: 100.0
-      delta: 0.05
+      xmin: -10.0
+      ymin: -10.0
+      xmax: 10.0
+      ymax: 10.0
+      delta: 0.10 # 0.05
 
       # All default
       sigma: 0.05
       kernelSize: 1
       lstep: 0.05
       astep: 0.05
-      iterations: 5
+      iterations: 10 # 5
       lsigma: 0.075
       ogain: 3.0
       lskip: 0
