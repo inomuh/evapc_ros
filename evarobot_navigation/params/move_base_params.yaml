@@ -1,5 +1,5 @@
 controller_frequency: 5.0
-recovery_behaviour_enabled: true
+recovery_behaviour_enabled: false # true
 
 NavfnROS:
   allow_unknown: true 
@@ -62,12 +62,21 @@ DWAPlannerROS:
   max_vel_y: 0
   min_vel_y: 0
 
-  max_trans_vel: 0.45
+  max_trans_vel: 0.35
   min_trans_vel: 0.10
   max_rot_vel: 0.35
-  min_rot_vel: 0.20
+  min_rot_vel: 0.25
 
   # Goal Tolerance Parameters
   yaw_goal_tolerance: 0.25 
   xy_goal_tolerance: 0.3
   latch_xy_goal_tolerance: false
+
+  # Trajectory Scoring Parameters
+#  path_distance_bias: 32.0
+#  goal_distance_bias: 24.0
+#  occdist_scale: 0.1
+#  forward_point_distance: 0.325
+#  stop_time_buffer: 0.2
+#  scaling_speed: 0.25
+#  max_scaling_factor: 0.2
