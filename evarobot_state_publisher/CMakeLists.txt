@@ -30,7 +30,7 @@ add_executable(odom_to_base src/odom_to_base.cpp)
 )
 
 
-foreach(dir launch rviz)
+foreach(dir launch)
     install(DIRECTORY ${dir}/
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach()
