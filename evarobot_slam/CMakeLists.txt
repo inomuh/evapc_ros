@@ -8,7 +8,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-foreach(dir gazebo_map launch rviz)
+foreach(dir gazebo_map launch)
     install(DIRECTORY ${dir}/
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach()
