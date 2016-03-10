@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>evapc_start</name>
-  <version>0.0.0</version>
+  <version>0.0.5</version>
   <description>
     The evapc_start provides roslaunch scripts for starting the Evarobot base functionality in PC.
   </description>
