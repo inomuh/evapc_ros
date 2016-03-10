@@ -4,6 +4,25 @@ Changelog for package evarobot_description
 
 Forthcoming
 -----------
+* modify robot model for new mesh files
+* separate gazebo libraries from evarobot_description
+* change odom frame id (odom_combined) in gazebo plugin
+* include config file
+* configure dependencies
+* delete unused lines
+* delete unused meshes
+* add dae version of wheel
+* fix communication problem with evarobot
+* changes for multi evarobot
+* change stl with dae
+* modify for multi evarobot
+* changes for multi evarobot in gazebo
+* change .stl with collada
+* Add argument world_path
+* changelog
+* fix warning GetValueDouble -> Get<double>
+* Contributors: Mehmet Akcakoca
+
 * fix warning GetValueDouble -> Get<double>
 * Contributors: Mehmet Akcakoca
 

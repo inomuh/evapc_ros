@@ -4,6 +4,23 @@ Changelog for package evapc_start
 
 Forthcoming
 -----------
+* install scripts folder
+* add script which gives permission to sensor
+* add sync.launch which opens master_discovery and master_sync
+* add sync.launch which opens master_discover and master_sync
+* add master_discovery and master_sync launch files
+* update
+* add scripts to change root of lidar and laser sensor drivers
+* add launch files for hokuyo laser
+* add comment for using sudo command without password
+* use openni2 instead of openni for asus xtion
+* add new launch file to run lidar with master_discovery
+* add demo start launch file
+* add changelog
+* configure dependencies
+* first commit
+* Contributors: Mehmet Akcakoca
+
 * configure dependencies
 * first commit
 * Contributors: Mehmet Akcakoca

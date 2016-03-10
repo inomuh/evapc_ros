@@ -4,6 +4,15 @@ Changelog for package evarobot_state_publisher
 
 Forthcoming
 -----------
+* remove rviz folder
+* move rviz to evarobot_viz
+* delete unused folder
+* add run_depend for joint_state_publisher
+* add joint_state_publisher launcher
+* configure dependencies
+* add tf_prefix & disable odom_to_base
+* changelog
+* Contributors: Mehmet Akcakoca
 
 0.0.5 (2015-09-03)
 ------------------
