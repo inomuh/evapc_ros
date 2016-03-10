@@ -2,8 +2,8 @@
 Changelog for package evarobot_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * modify robot model for new mesh files
 * separate gazebo libraries from evarobot_description
 * change odom frame id (odom_combined) in gazebo plugin

@@ -2,8 +2,8 @@
 Changelog for package evarobot_navigation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * update params
 * update params
 * update params

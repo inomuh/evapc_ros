@@ -2,8 +2,8 @@
 Changelog for package evarc_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * add dependency for evarobot_viz
 * move im_msgs package from evapc_ros to im_msgs stack
 * change dependencies

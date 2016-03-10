@@ -2,8 +2,8 @@
 Changelog for package evarobot_viz
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * modify rviz file
 * move rviz to evarobot_viz
 * Contributors: Mehmet Akcakoca

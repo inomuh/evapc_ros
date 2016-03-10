@@ -2,8 +2,8 @@
 Changelog for package evarobot_state_publisher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * remove rviz folder
 * move rviz to evarobot_viz
 * delete unused folder

@@ -2,8 +2,8 @@
 Changelog for package evarobot_diagnostics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * add changelog
 * configure dependencies
 * first commit

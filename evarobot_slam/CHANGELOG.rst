@@ -2,8 +2,8 @@
 Changelog for package evarobot_slam
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * decrease map size
 * decrease map size
 * new map

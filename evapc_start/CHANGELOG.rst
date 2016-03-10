@@ -2,8 +2,8 @@
 Changelog for package evapc_start
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * install scripts folder
 * add script which gives permission to sensor
 * add sync.launch which opens master_discovery and master_sync

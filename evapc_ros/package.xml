@@ -1,6 +1,6 @@
 <package>
   <name>evapc_ros</name>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
   <description>
     The evapc_ros meta package provides all the basic packages for model and navigation of Evarobot.
   </description>

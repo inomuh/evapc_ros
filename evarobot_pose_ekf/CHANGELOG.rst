@@ -2,8 +2,8 @@
 Changelog for package evarobot_pose_ekf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2016-03-10)
+------------------
 * change freq and debug false
 * configure dependencies
 * remap imu topic name & enable self_diagnose
