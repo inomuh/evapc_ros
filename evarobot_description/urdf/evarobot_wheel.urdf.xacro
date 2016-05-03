@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="evarobot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="evarobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 	<xacro:macro name="evarobot_wheel" params="prefix joint_x joint_y joint_z joint_roll joint_pitch joint_yaw cylinder_length cylinder_radius parent_link">
 
 		<link name="${prefix}_link">

@@ -1,14 +1,14 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!--
   The complete evarobot library of xacros for easy reference
  -->
-<robot name="evarobot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="evarobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
   
-  <xacro:property name="pi" value="3.1415926535897931" />
-  
+    
   <!-- Includes -->
   <xacro:include filename="$(find evarobot_description)/urdf/materials.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_base.urdf.xacro"/>
+  <xacro:include filename="$(find evarobot_description)/urdf/evarobot_base_c.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_caster.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_wheel.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_ahrs.urdf.xacro"/> 
@@ -18,6 +18,7 @@
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_lidar.urdf.xacro"/> 
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_bumper.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/plates.urdf.xacro"/>
+  
 
 
  <!-- Differential Drive Plugin -->
@@ -57,6 +58,17 @@
 					   box_x="0.40" 
 					   box_y="0.30" 
 					   box_z="0.30" />
+
+	<xacro:evarobot_base_c prefix="base" 
+					   mesh_x="0.065" 
+					   mesh_y="-0.11" 
+					   mesh_z="-0.15" 
+					   mesh_roll="0.0" 
+					   mesh_pitch="0.0" 
+					   mesh_yaw="0" 
+					   box_x="0.40" 
+					   box_y="0.30" 
+					   box_z="0.30" />					   
 					   
   <!-- Left Wheel -->
   <xacro:evarobot_wheel prefix="left_wheel" 
@@ -69,6 +81,10 @@
 						cylinder_length="0.035" 
 						cylinder_radius="0.085" 
 						parent_link="base_link" />
+						
+<gazebo reference="orange_link">
+			<material>Gazebo/Orange</material>
+		</gazebo>
   
   <!-- Right Wheel 	 -->					
   <xacro:evarobot_wheel prefix="right_wheel" 
@@ -131,7 +147,7 @@
 												topic_name="lidar" 
 												frame_name="lidar_link" /> 
 												
-												
+							
 
   <!-- Kinect -->
    <xacro:evarobot_kinect prefix="kinect"
@@ -338,7 +354,7 @@
 						   	    <origin xyz="-0.130 -0.147 ${-0.122+50/1000}" rpy="0 0 ${-2*pi/3}" />
 
 	</xacro:evarobot_infrared> 
-	
+
  <!-- Bumper -->
   
   <xacro:evarobot_bumper prefix="bumper0"

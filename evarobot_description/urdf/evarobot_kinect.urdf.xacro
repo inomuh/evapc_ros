@@ -1,14 +1,13 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 
-<robot xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 	  	
 	<xacro:macro name="evarobot_kinect" 
 	params="prefix
 			joint_x joint_y joint_z joint_roll joint_pitch joint_yaw
 			parent_link
 			base_line update_rate
-			camera_name
-			"> 
+			camera_name"> 
 		
     <joint name="camera_rgb_joint" type="fixed">
 			<origin xyz="0.0 -0.02 0.0" rpy="0.0 0.0 0.0"/>
