@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+	<master auto="start"/>
+	
+	<!-- Run evarobot_competition -->
+	<node pkg="evarobot_competition" type="evarobot_competition" respawn="false" name="evarobot_competition">
+		<rosparam file="$(find evarobot_competition)/params/evarobot_competition.yaml" command="load"/>
+	</node>
+	
+</launch>
