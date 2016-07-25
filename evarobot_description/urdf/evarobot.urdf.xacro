@@ -17,7 +17,9 @@
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_kinect.urdf.xacro"/> 
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_lidar.urdf.xacro"/> 
   <xacro:include filename="$(find evarobot_description)/urdf/evarobot_bumper.urdf.xacro"/>
+  <xacro:include filename="$(find evarobot_description)/urdf/evarobot_pozyx.urdf.xacro"/>
   <xacro:include filename="$(find evarobot_description)/urdf/plates.urdf.xacro"/>
+  
 
 
  <!-- Differential Drive Plugin -->
@@ -378,5 +380,16 @@
   <origin xyz="0.191 0.084 ${-0.122+50/1000}" rpy="0 0 ${pi/6}" />
 						 </xacro:evarobot_bumper>
 						
-			
+  <!-- Pozyx -->
+  <xacro:evarobot_pozyx prefix="pozyx"
+						 joint_x="0.0" 
+						 joint_y="0.0" 
+						 joint_z="0.26"
+						 parent_link="base_link"
+						 topic_name="pozyx"
+						 joint_roll="0.0"
+						 joint_pitch="0.0"
+						 joint_yaw="0.0" >
+						 </xacro:evarobot_pozyx>				 
+  
 </robot>
